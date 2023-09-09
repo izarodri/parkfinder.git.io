@@ -30,7 +30,13 @@
                 // Exiba as informações na div 'info'
                 const infoDiv_1 = document.getElementById('info_1');
                 const infoDiv_2 = document.getElementById('info_2');
-                infoDiv_1.innerHTML = `Distância: ${distancia}m<br>Duração: ${tempo}min`;
+                const infoDiv_3 = document.getElementById('info_3');
+                const infoDiv_4 = document.getElementById('info_4');
+                infoDiv_1.innerHTML = `Distância:`;
+                infoDiv_2.innerHTML = `Duração:`;
+                infoDiv_3.innerHTML = `${distancia}m`;
+                infoDiv_4.innerHTML = `${tempo/60}min`;
+                //faz a div com o conteúdo aparecer na tela
                 var mostrarDivInfo = document.getElementById('info_divEstrutura');
                 mostrarDivInfo.style.display = 'block';
             });
