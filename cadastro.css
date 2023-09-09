@@ -25,7 +25,7 @@ section {
 
 .norma{
     color: #453F3F;
-    font-size: 13px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -39,8 +39,8 @@ section {
 }
 
 input {
-    height: 43px;
-    width: 300px;
+    height: 38px;
+    width: 280px;
     border: 1px solid #EAE7E7;
     border-radius: 15px;
     box-sizing: border-box;
@@ -141,7 +141,7 @@ button{
 
 .cadastro {
     width: 550px;
-    height: 530px;
+    height: 570px;
     border-radius: 30px;
     background: #ffffff;
     position: relative; 
@@ -154,9 +154,12 @@ button{
 
 .cadasposi{
     width: 300px;
-    height: 530px;
+    height: 570px;
     float: right;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    padding-top: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     position: relative;
     display: flex;
