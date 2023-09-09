@@ -59,3 +59,14 @@ body {
 #map {
   height: 700px; /* Altura do mapa com espaço para a barra superior */
 }
+#info_divEstrutura{
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 525px;
+  height: 130px;
+  top: 520px;
+  left: 65px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 4px 0px #00000040;
+}

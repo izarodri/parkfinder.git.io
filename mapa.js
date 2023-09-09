@@ -28,13 +28,15 @@
                 const distancia = primeiraRota.summary.totalDistance;
 
                 // Exiba as informações na div 'info'
-                const infoDiv = document.getElementById('info');
-                infoDiv.innerHTML = `Tempo estimado: ${tempo} segundos<br>Distância: ${distancia} metros`;
+                const infoDiv_1 = document.getElementById('info_1');
+                const infoDiv_2 = document.getElementById('info_2');
+                infoDiv_1.innerHTML = `Distância: ${distancia}m<br>Duração: ${tempo}min`;
+                var mostrarDivInfo = document.getElementById('info_divEstrutura');
+                mostrarDivInfo.style.display = 'block';
             });
         }
 
         function calcularRota() {
-            // Sua chave de API da LocationIQ
             
 
             // Obter o endereço de destino do formulário
