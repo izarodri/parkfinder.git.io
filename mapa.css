@@ -2,10 +2,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-
 .top-bar{
     background-color: black;
     height: 70px;
@@ -26,7 +22,7 @@ body {
     margin-top: 13px;
   }
   
-  #txtBusca{
+  #destino{
     float: left;
     background-color:transparent;
     padding-left:5px;
@@ -59,4 +55,7 @@ body {
 
   input:focus {
     outline: none;
+}
+#map {
+  height: 700px; /* Altura do mapa com espaço para a barra superior */
 }
