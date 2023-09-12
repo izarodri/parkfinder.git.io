@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", function() {
     var confsenha = document.getElementById("confsenha");
     const botao = document.getElementById("botaocad");
     const errorm = document.getElementById("error-message") 
-    const msg = document.getElementById("mensagem")
+    var check = false;
+    
    
     function cadastrar(dados) {
+        event.preventDefault();
         fetch("http://localhost:8082/cliente", {
             headers: {
                 'Accept': 'application/json',
@@ -17,18 +19,26 @@ document.addEventListener("DOMContentLoaded", function() {
             body: JSON.stringify(dados)
         })
         .then(function (res) {
-            console.log(res);
             if (res.status === 200) {
-                alert("Usuario cadastrado com sucesso")
-                window.location.href = "mapa.html"
-             
+                return res.text(); 
             } else {
                 throw new Error("Erro no servidor");
             }
         })
+        .then(function (data) {
+
+    
+
+            if (data === "ok") {
+                check = true
+                alert("Usuario cadastrado com sucesso")
+                window.location.href = "login.html";
+               
+            } 
+        })
         .catch(function (error) {
             console.error("Erro:", error);
-            alert("Algo deu errado ao salvar os seus dados. Tente novamente!");
+            alert("Email digitado já está cadastrado!");
         });
     }
 
@@ -52,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 function mostrar(event) {
     event.preventDefault();
+  
 
     if (nome.value === "" || email.value === "" || senha.value === "" || confsenha.value === "") {
         alert("Preencha todos os campos antes de prosseguir.");
@@ -67,7 +78,16 @@ function mostrar(event) {
             longitude: 0
         };
         cadastrar(dados);
-        
+        if(check){
+        const dados = {
+            nome: nome.value,
+            email: email.value,
+            senha: senha.value,
+            latitude: 0,
+            longitude: 0
+        };
+        cadastrar(dados);
+    }
     } else {
         alert("Campos senha e confirmar senha diferentes!");
     }

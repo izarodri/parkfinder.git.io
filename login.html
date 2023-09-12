@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="login.css">
     <link rel="icon" href="Imagens/Frame 14 (1).png" type="image/x-icon">
+=======
+    <link rel="stylesheet" href="longinn.css">
+    <link rel="icon" href="Frame 14 (1).png" type="image/x-icon">
+    <script src="./login.js"> defer</script>
+>>>>>>> Stashed changes
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fazer Login no ParkFinder</title>
@@ -44,14 +50,23 @@
                 </div>
 
                 <p><a class="lin" href="recuperação.html">Esqueceu sua senha?</a></p>
-
+                <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
                 <div class="butaologin">
-                    <a href="mapa.html"><button class="center-button"><b>Login</b></button></a>
+                    <button id="botaocad" class="center-button"><b>Login</b></button>
                 </div>
 
                 <div class="ultimocadastr"> 
                     <p class="texcadas">Não possui uma conta? <a href="cadastro.html" class="cadas"> Cadastre-se</a></p>
+<<<<<<< Updated upstream
                 </div>  
+=======
+                </div>
+
+               
+                
+
+                
+>>>>>>> Stashed changes
             </div>
             
         </section>
