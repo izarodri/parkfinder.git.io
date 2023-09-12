@@ -3,11 +3,13 @@
 <head>
     <link rel="stylesheet" href="cadastro.css">
     <link rel="icon" href="Imagens/Frame 14 (1).png" type="image/x-icon">
+    <script src="./script.js"> defer</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar uma Conta no ParkFinder</title>
 </head>
 <body>
+    
     <main>
 
         <div class="fundos">
@@ -39,6 +41,7 @@
                             <input tyle="margin-bottom: 9px;" type="text" id="email" name="seuemail" aria-labelledby="label-email"
                             placeholder="Adicionar Email" />
                             <label class="label" for="femail" id="label-femail"></label>
+                           
                         </div>
                     </div>
 
@@ -51,17 +54,19 @@
                         </div>
                     </div>
 
-                    <p class="norma">Confirmar Senha</p>
+                    <p  class="norma">Confirmar Senha</p>
                     <div class="input-container">
                         <div class="placeholder">
-                            <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha" 
+                            <input type="password" id="confsenha" name="suasenha" aria-labelledby="label-senha" 
                             placeholder="Confirme sua Senha" />
                             <label class="label" for="senha" id="label-senha"></label>
                         </div>
+                        <div id="error-message"></div>
                     </div>
-    
-                    <div class="butaologin">
-                        <a href="mapa.html"><button class="center-button"><b>Cadastrar</b></button></a>
+
+                    <div class="butaologin " style="padding-top: 45px;">
+                        <button class="center-button"><b id="botaocad">Cadastrar</b></button>
+
                     </div>
     
                     <div class="ultimocadastr"> 
