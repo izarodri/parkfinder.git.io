@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< Updated upstream
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="Imagens/Frame 14 (1).png" type="image/x-icon">
+=======
     <link rel="stylesheet" href="longinn.css">
     <link rel="icon" href="Frame 14 (1).png" type="image/x-icon">
+    <script src="./login.js"> defer</script>
+>>>>>>> Stashed changes
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fazer Login no ParkFinder</title>
@@ -17,52 +23,52 @@
 
         <section>
             <div class="bemvindo">
-                <img src="logobranca.png" alt="Logo ParkFinder">
+                <img src="Imagens/logobranca.png" alt="Logo ParkFinder">
                 <p class="pbemvin"> BEM VINDO DE VOLTA!</p>
                 <p class="facalog">Faça Login para continuar.</p>
-                <img src="nome app.png" alt="Nome ParkFinder">
+                <img src="Imagens/nome app.png" alt="Nome ParkFinder">
             </div>
 
             
             <div class="login">
-                <p style="text-align: center; font-size: 22px; margin-bottom: 30px;"><b>Login</b> </p>
+                <p class="logintitulo"><b>Login</b> </p>
                 
                 <p class="norma">Email</p>
                 <div class="input-container ">
-
                     <div class="placeholder">
-
-                    <input type="text" id="email" name="seuemail" aria-labelledby="label-email"placeholder="Seu Email" />
-                    <label class="label" for="femail" id="label-femail">
-                    </label>
+                        <input type="text" id="email" name="seuemail" aria-labelledby="label-email"placeholder="Seu Email" />
+                        <label class="label" for="femail" id="label-femail"></label>
                     </div>
                 </div>
 
                 <p class="norma">Senha</p>
                 <div class="input-container">
-
                     <div class="placeholder">
+                        <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha" placeholder="Sua Senha" />
+                        <label class="label" for="senha" id="label-senha"></label>
+                    </div>
+                </div>
 
-                    <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha" placeholder="Sua Senha" />
-                    <label class="label" for="senha" id="label-senha">
-                        
-                    </label>
-                </div>
-                </div>
                 <p><a class="lin" href="recuperação.html">Esqueceu sua senha?</a></p>
-
+                <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
                 <div class="butaologin">
-                    <a href="mapa.html"><button class="center-button"><b>Login</b></button></a>
+                    <button id="botaocad" class="center-button"><b>Login</b></button>
                 </div>
 
                 <div class="ultimocadastr"> 
                     <p class="texcadas">Não possui uma conta? <a href="cadastro.html" class="cadas"> Cadastre-se</a></p>
+<<<<<<< Updated upstream
+                </div>  
+=======
                 </div>
+
                
                 
 
                 
+>>>>>>> Stashed changes
             </div>
+            
         </section>
     </main>
 </body>
