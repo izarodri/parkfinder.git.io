@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const errorm = document.getElementById("error-message") 
     var check = false;
     
+    document.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) {
+            mostrar(event);
+        }
+    });
    
     function cadastrar(dados) {
         event.preventDefault();
@@ -27,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(function (data) {
 
-    
 
             if (data === "ok") {
                 check = true

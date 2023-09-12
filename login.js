@@ -36,8 +36,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
-    KeyboardEvent("event: ")
     botao.addEventListener("click", mostrar);
+    document.addEventListener("keydown", function(event) {
+        if (event.keyCode === 13) { 
+            mostrar(event);
+        }
+    });
 
     
 
@@ -59,4 +63,4 @@ function mostrar(event) {
 
 }
     
-});
+})

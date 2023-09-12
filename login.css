@@ -195,6 +195,7 @@ button{
 }
 
 .butaologin {
+    cursor: pointer;
     display: flex;
     justify-content: center;
 }
