@@ -124,13 +124,23 @@ section{
 }
 
 .butaocadastrastin{
+<<<<<<< Updated upstream
     color: white;
+=======
+    cursor: pointer;
+    color: white !important;
+>>>>>>> Stashed changes
     border: 2px solid white;
     background-color: transparent;
 }
 
 .butaologintin{
+<<<<<<< Updated upstream
     color: black;
+=======
+    cursor: pointer;
+    color: black !important;
+>>>>>>> Stashed changes
     border: 2px solid rgb(255, 255, 255);
     background-color: white; 
 }

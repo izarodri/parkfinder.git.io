@@ -10,6 +10,7 @@ body {
     font-weight: bold;
 }
 
+
 main {
     display: flex;
     justify-content: center;
@@ -28,7 +29,68 @@ section {
 }
 
 
+
 /*SVG de decoração*/
+.text{
+    color: #ADA4A4;
+    font-size: 11px;
+    font-weight: 100; 
+}
+
+.lin{
+    float: right;
+    font-size: 11px;
+    color: #0037A0;
+
+}
+
+a {
+    text-decoration: none;
+    
+}
+
+button{
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+    border: 1px solid black;
+    margin-bottom: 7px;
+}
+
+.butaologin {
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+}
+
+.butaologin button {
+    position: absolute; /* Defina a posição como absoluta */
+    left: 50%; /* Posicione o botão no meio horizontal da .login */
+    transform: translateX(-50%); /* Centralize o botão horizontalmente */
+    /* Outros estilos do botão, se necessário */
+}
+
+.texcadas{
+    font-size: 11px;
+    color: #A19494;
+}
+
+.ultimocadastr{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0px;
+}
+
+.cadas{
+    font-size: 11px;
+    color: #0037A0;
+}
+
+
 .fundos{
     width: 834px;
     height: 1024px;
