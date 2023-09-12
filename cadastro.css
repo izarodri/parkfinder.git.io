@@ -55,7 +55,7 @@ section {
 /*Div branca*/
 .cadastro {
     width: 550px;
-    height: 92%;
+    height: 570px;
     border-radius: 30px;
     background: #ffffff;
     position: relative; 
@@ -70,7 +70,7 @@ section {
 /*Container com elementos*/
 .cadasposi{
     width: 300px;
-    height: 92%;
+    height: 100%;
     float: right;
     padding-left: 30px;
     padding-right: 30px;
@@ -268,13 +268,14 @@ a {
         overflow-x: hidden;
       }
     main{ 
-        min-height: 100vh;
+        margin-bottom: 50px;
     }
     section {
         flex-direction: column-reverse;
         /* Isso coloca a div "hello" acima da div "cadastro" na versão móvel */
         align-items: center;
         justify-content: center;
+        
       }
 
     .imagem-na-div-cadastro {
@@ -297,30 +298,28 @@ a {
         margin-bottom: 16%;
     }
     .hello h3 {
-        margin-top: 30px;
+        margin-top: 20px;
     }
     
     .cadastro {
         width: 90%;
         margin-top: 20px;
-    
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        height: 550px;
         
         
         
     }
    
     .cadasposi{
-        width: 80%; /* Certifique-se de ocupar a largura completa da div "cadastro" */
+        width: 80%; 
         display: flex;
         flex-direction: column;
-         /* Centralize horizontalmente na versão móvel */
-        justify-content: center; /* Centralize verticalmente na versão móvel */
-        height: 100%; /* Centralize verticalmente na versão móvel */
-       margin: 10px;
-       padding: 0px;
+        justify-content: center; 
+        height: 550px; 
+        margin: 10px;
+        padding: 0px;
     }
     input{
         width: 100%;

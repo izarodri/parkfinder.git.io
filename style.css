@@ -73,9 +73,9 @@ section{
 /*Logos e Imagens */
 .logogrande{
     max-width: 80%;
-    max-height: none; 
-    min-width: 10%;
-    min-height: auto;
+    
+   
+    
 }
 
 .imagemapa{
@@ -93,6 +93,7 @@ section{
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 
@@ -111,8 +112,12 @@ section{
     display: flex;
     justify-content: flex-end; /* Alinhar os botões à direita */
     box-sizing: border-box;
-    margin-right: 20px;
-    margin-top: 20px;
+   
+    
+    position: absolute;
+    top: 20px; /* Ajuste a distância a partir do topo conforme necessário */
+    right: 20px; /* Ajuste a distância a partir da direita conforme necessário */
+    z-index: 999; 
 }
 
 button{
@@ -240,4 +245,59 @@ button{
 
 a {
     text-decoration: none;
+}
+
+/*Mobile*/
+@media screen and (max-width: 768px) {
+    .imagemapa{
+        display: none;
+    }
+    .imagemobile {
+        background-image: url(Imagens/Rectangle\ 57.png);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15%;
+        background-size: cover;
+        background-position: right bottom;
+      }
+
+    .botom-image-mobile{
+        position: absolute;
+        bottom: 0;
+        margin-bottom: 50px;
+        max-width: 19%;
+        max-height: auto;
+        min-width: 1%;
+        min-height: auto;
+    }
+
+    .divinicio h3{
+        margin-top: 40%;
+        margin-right: 0px;
+        width: 90%;
+        font-size: 120%;
+        
+
+    }
+    .logogrande{
+        min-width: 100%;
+        margin-bottom: 15%;
+    }
+
+    .divinicio p{
+        margin-right: 0px;
+        font-size: 100%;
+    }
+
+
+    @media screen and (min-width: 769px) {
+        .imagemobile {
+          display: none;
+        }
+        .imagemobile img{
+            display: none;
+        }
+      }
 }
