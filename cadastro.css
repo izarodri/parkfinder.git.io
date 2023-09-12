@@ -2,6 +2,7 @@ body {
     background: #DFDFDF;
     margin: 0;
     padding: 0;
+    
   
 }
 #error-message{
@@ -37,59 +38,6 @@ section {
     font-weight: 100; 
 }
 
-.lin{
-    float: right;
-    font-size: 11px;
-    color: #0037A0;
-
-}
-
-a {
-    text-decoration: none;
-    
-}
-
-button{
-    cursor: pointer;
-    width: 200px;
-    height: 40px;
-    border-radius: 15px;
-    text-align: center;
-    background-color: #000;
-    color: white;
-    border: 1px solid black;
-    margin-bottom: 7px;
-}
-
-.butaologin {
-    display: flex;
-    justify-content: center;
-    padding-top: 45px;
-}
-
-.butaologin button {
-    position: absolute; /* Defina a posição como absoluta */
-    left: 50%; /* Posicione o botão no meio horizontal da .login */
-    transform: translateX(-50%); /* Centralize o botão horizontalmente */
-    /* Outros estilos do botão, se necessário */
-}
-
-.texcadas{
-    font-size: 11px;
-    color: #A19494;
-}
-
-.ultimocadastr{
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: 0px;
-}
-
-.cadas{
-    font-size: 11px;
-    color: #0037A0;
-}
-
 
 .fundos{
     width: 834px;
@@ -107,7 +55,7 @@ button{
 /*Div branca*/
 .cadastro {
     width: 550px;
-    height: 570px;
+    height: 92%;
     border-radius: 30px;
     background: #ffffff;
     position: relative; 
@@ -122,7 +70,7 @@ button{
 /*Container com elementos*/
 .cadasposi{
     width: 300px;
-    height: 570px;
+    height: 92%;
     float: right;
     padding-left: 30px;
     padding-right: 30px;
@@ -306,5 +254,78 @@ a {
     width: 100px;
     height: auto;
     margin-bottom: 10px; 
-    
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*MOBILE*/
+@media screen and (max-width: 768px) { 
+
+    html, body {
+        overflow-x: hidden;
+      }
+    main{ 
+        min-height: 100vh;
+    }
+    section {
+        flex-direction: column-reverse;
+        /* Isso coloca a div "hello" acima da div "cadastro" na versão móvel */
+        align-items: center;
+        justify-content: center;
+      }
+
+    .imagem-na-div-cadastro {
+      display: none; /* Oculta a div em dispositivos móveis */
+    }
+  
+    .fundos {
+      display: none; 
+    }
+    
+    .hello {
+        width: 100%;
+        margin-top: 1px;
+        order: 1;
+        margin-left: 1px;
+        border-radius: 0px;
+    ;
+    }
+    .hello p{
+        margin-bottom: 16%;
+    }
+    .hello h3 {
+        margin-top: 30px;
+    }
+    
+    .cadastro {
+        width: 90%;
+        margin-top: 20px;
+    
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        
+        
+        
+    }
+   
+    .cadasposi{
+        width: 80%; /* Certifique-se de ocupar a largura completa da div "cadastro" */
+        display: flex;
+        flex-direction: column;
+         /* Centralize horizontalmente na versão móvel */
+        justify-content: center; /* Centralize verticalmente na versão móvel */
+        height: 100%; /* Centralize verticalmente na versão móvel */
+       margin: 10px;
+       padding: 0px;
+    }
+    input{
+        width: 100%;
+    }
+
+  }
+  
+
