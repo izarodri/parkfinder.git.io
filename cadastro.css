@@ -23,6 +23,12 @@ section {
    
 }
 
+.ticadastro{
+    text-align: center;
+     font-size: 20px;
+      margin-bottom: 18px;
+}
+
 .norma{
     color: #453F3F;
     font-size: 12px;
@@ -46,6 +52,7 @@ input {
     box-sizing: border-box;
     padding: 16px;
     background: #EAE7E7;
+    margin-bottom: 8px;
     
    
 }
@@ -104,6 +111,7 @@ button{
 .butaologin {
     display: flex;
     justify-content: center;
+    padding-top: 45px;
 }
 
 .butaologin button {
@@ -136,6 +144,8 @@ button{
     z-index: 1;
     position: fixed;
     left: 0;
+    margin: 0;
+    padding: 0;
 
 }
 
@@ -198,6 +208,7 @@ button{
     flex-direction: column;
     margin-top: 150px;
     align-items: center;
+    text-align: left;
 }
 
 .hello p {

@@ -38,10 +38,27 @@ section{
     width: 100%;
     background-color: #717171;
     margin-top: 45px;
+    margin-left: 0;
+}
+
+.divinicio{
+    margin-left: 100px;
+}
+
+.diviniciop{
+    font-size: 20px; 
+    font-weight: 700;
+     margin-top: 110px;
+}
+
+.diviniciopp{
+    font-size: 14px;
+    font-weight: lighter; 
+    font-family: Courier New, monospace;
 }
 
 .imagemapa{
-   background-image: url(Rectangle\ 57.png);
+   background-image: url(Imagens/Rectangle\ 57.png);
    position: absolute;
    top: 0;
    right: 0;
@@ -85,7 +102,7 @@ section{
 }
 
 .butaocadastrastin{
-    color: white !important;
+    color: white;
     border: 2px solid white;
     background-color: transparent;
    
@@ -93,7 +110,7 @@ section{
 }
 
 .butaologintin{
-    color: black !important;
+    color: black;
     border: 2px solid rgb(255, 255, 255);
     background-color: white;
     
@@ -117,6 +134,18 @@ section{
     color: white;
 }
 
+.cinzap{
+    font-size: 25px;
+     font-weight: 800; 
+     margin-top: 100px;
+}
+
+.cinzapp{
+    font-size: 17px;
+     font-weight: 400;
+      margin-top: 0;
+}
+
 .apresentação{
     width: 200px;
     height: 370px;
@@ -132,6 +161,7 @@ section{
 .apresentação img {
     display: block; 
     margin: 0 auto; /* Centraliza horizontalmente a imagem dentro da div */
+    margin-top: 200px;
 }
 
 
