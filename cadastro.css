@@ -25,123 +25,10 @@ section {
     z-index: 2;
     height: 100vh; 
     width: 100%;
-   
-}
-
-.ticadastro{
-    text-align: center;
-     font-size: 20px;
-      margin-bottom: 18px;
-}
-
-.norma{
-    color: #453F3F;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.333px;
-}
-
-.input-container {
-    position: relative;
-    
-
-}
-
-input {
-    height: 38px;
-    width: 280px;
-    border: 1px solid #EAE7E7;
-    border-radius: 15px;
-    box-sizing: border-box;
-    padding: 16px;
-    background: #EAE7E7;
-    margin-bottom: 8px;
-    
-   
-}
-
-.label {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 25px;
-    display: flex;
-    align-items: center;
-}
-
-.input-container .placeholder input[type="password"]  { 
-    color: #3b3b3b !important;
-    font-size: 11px;
-    font-weight: 100; 
-}
-
-.input-container .placeholder  input[type="text"]   { 
-    color: #3b3b3b !important;
-    font-size: 11px;
-    font-weight: 100; 
 }
 
 
-.text{
-    color: #ADA4A4;
-    font-size: 11px;
-    font-weight: 100; 
-}
-
-.lin{
-    float: right;
-    font-size: 11px;
-    color: #0037A0;
-
-}
-
-a {
-    text-decoration: none;
-    
-}
-
-button{
-    width: 200px;
-    height: 40px;
-    border-radius: 15px;
-    text-align: center;
-    background-color: #000;
-    color: white;
-    border: 1px solid black;
-    margin-bottom: 7px;
-}
-
-.butaologin {
-    display: flex;
-    justify-content: center;
-    padding-top: 45px;
-}
-
-.butaologin button {
-    position: absolute; /* Defina a posição como absoluta */
-    left: 50%; /* Posicione o botão no meio horizontal da .login */
-    transform: translateX(-50%); /* Centralize o botão horizontalmente */
-    /* Outros estilos do botão, se necessário */
-}
-
-.texcadas{
-    font-size: 11px;
-    color: #A19494;
-}
-
-.ultimocadastr{
-    text-align: center;
-    margin-top: auto;
-    margin-bottom: 0px;
-}
-
-.cadas{
-    font-size: 11px;
-    color: #0037A0;
-}
-
+/*SVG de decoração*/
 .fundos{
     width: 834px;
     height: 1024px;
@@ -151,9 +38,11 @@ button{
     left: 0;
     margin: 0;
     padding: 0;
-
 }
 
+
+/* Elementos para fazer Cadastro*/
+/*Div branca*/
 .cadastro {
     width: 550px;
     height: 570px;
@@ -167,6 +56,8 @@ button{
     right: 0;
 }
 
+
+/*Container com elementos*/
 .cadasposi{
     width: 300px;
     height: 570px;
@@ -182,21 +73,128 @@ button{
     margin-left: 30px;
 }
 
-.imagelogo{
+/*Titulo*/
+.cadasposi h3{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+/*Opções*/
+.cadasposi p{
+    color: #453F3F;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.333px;
+}
+
+
+/*Text Field/Input*/
+.input-container {
+    position: relative;
+}
+
+input {
+    height: 38px;
+    width: 280px;
+    border: 1px solid #EAE7E7;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 16px;
+    background: #EAE7E7;
+    margin-bottom: 8px;
+}
+
+.input-container .placeholder input[type="password"]  { 
+    color: #3b3b3b;
+    font-size: 11px;
+    font-weight: 100; 
+}
+
+.input-container .placeholder  input[type="text"]   { 
+    color: #3b3b3b;
+    font-size: 11px;
+    font-weight: 100; 
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 25px;
+    display: flex;
+    align-items: center;
+}
+
+/*Botão cadastrar*/
+.butaocadastrar {
+    display: flex;
+    justify-content: center;
+    padding-top: 45px;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: #000;
+    color: white;
+    border: 1px solid black;
+    margin-bottom: 7px;  
+}
+
+.butaocadastrar button {
+    position: absolute; /* Defina a posição como absoluta */
+    left: 50%; /* Posicione o botão no meio horizontal da .login */
+    transform: translateX(-50%); /* Centralize o botão horizontalmente */
+    /* Outros estilos do botão, se necessário */
+}
+
+
+/*Link para login*/
+.japossuiconta{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 0px;
+}
+
+.japossuiconta p{
+    font-size: 11px;
+    color: #A19494;
+}
+.japossuiconta p a{
+    font-size: 11px;
+    color: #0037A0;
+}
+
+
+/*Imagem na Div Cadastro*/
+.imagem-na-div-cadastro{
     display: flex;
     justify-content: right;
     align-items: right;
     margin-right: 60px;
 }
 
-.bottom-image {
+.imagem-na-div-cadastro img{
     position: absolute;
     top: 0;
     width: 71px;
     height: 100px;
     margin-top: 30px;
 }
+/*Fim Elementos Cadastro*/
 
+
+a {
+    text-decoration: none; /*Retirar sublinhado do link*/
+}
+
+    
+/*Div Olá*/
 .hello{
     background-color: rgb(0, 0, 0);
     width: 350px;
@@ -205,7 +203,6 @@ button{
     border-radius: 20px;
     box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.25);
     padding: 30px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-left: -140px; /* Espaço entre .bemvindo e .login */
     color: #ffffff;
     position: relative;
@@ -214,16 +211,11 @@ button{
     margin-top: 150px;
     align-items: center;
     text-align: left;
-}
-
-.hello p {
-    display: block;
-    margin: 5px 0;
-    text-align: left !important;
     font-family:Arial, Helvetica, sans-serif
 }
 
-.pbemvin{
+/*titulo Olá*/
+.hello h3{
     font-size: 40px;
     font-style: normal;
     font-weight: 600;
@@ -232,8 +224,12 @@ button{
     padding-right: 20px;
     padding-top:  60px;
     padding-bottom: 15px;
+    margin: 5px 0;
 }
-.facalog{
+
+/*texto da Div*/
+.hello p {
+    margin: 5px 0;
     font-size: 16px;
     font-style: normal;
     font-weight: 100;
@@ -242,7 +238,7 @@ button{
     padding-right: 20px;
 }
 
-
+/*imagem na parte inferior da Div*/
 .hello img:last-child{
     margin-top: auto;
     width: 100px;
