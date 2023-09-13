@@ -23,6 +23,7 @@ section {
     width: 100%;
 }
 
+/*Fundo SVG*/
 .fundo {
     width: 873px;
     height: 1024px;
@@ -32,6 +33,7 @@ section {
     left: 0;
 }
 
+/*Recuperação de senha*/
 .recu{
     width: 500px;
     height: 550px;
@@ -95,6 +97,9 @@ input {
     background: #EAE7E7;
     margin-left: 12px;
     margin-right: 12px;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
 }
 
 .placeholder{
@@ -112,16 +117,17 @@ button{
     margin-bottom: 7px;
 }
 
-.butaologin {
+.butaoconfirmar {
     display: flex;
     justify-content: center;
     padding-top: 40px;
+    margin-bottom: 20px;
 }
 
 a {
     text-decoration: none;
-    
 }
+
 
 @media screen and (max-width: 768px) {
     html,body{
@@ -139,7 +145,8 @@ a {
     }
 
     .recu p {
-        margin: 10%;
+        margin-left: 10%;
+        margin-right: 10%;
         font-size: 20px;
         width: 70%;
 
@@ -176,7 +183,7 @@ a {
         border: 0;
     }
 
-    .butaologin{
-        margin-bottom: 20px;
+    .butaoconfirmar{
+        margin-bottom: 27px;
     }
 }

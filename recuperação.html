@@ -7,6 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperação de Senha da Conta </title>
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputs = document.querySelectorAll(".pin-input");
+
+        inputs.forEach((input, index) => {
+            input.addEventListener("input", (e) => {
+                const inputValue = e.target.value;
+                const numericValue = inputValue.replace(/\D/g, ''); // Remove caracteres não numéricos
+                e.target.value = numericValue; // Define o valor apenas com os números
+
+                if (numericValue.length === 1) {
+                    if (index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                } else if (numericValue.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+
+            input.addEventListener("keydown", (e) => {
+                if (e.key === "Backspace" && e.target.value.length === 0 && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+
+        inputs[0].focus(); // Definir o foco inicial no primeiro campo
+    });
+</script>
+
+
 <body>
     <main>
 
@@ -16,11 +48,9 @@
             </svg>
         </div>
 
-        <!--Mobile-->
+        <!--MOBILE-->
         <div class="black"></div>
-    
-    
-    
+        <!--MOBILE-->
     
         <section>
     
@@ -32,26 +62,17 @@
                 
     
                 <div class="placeholder">
-        
-                    <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha"  />
-                    <label class="label" for="senha" id="label-senha"> </label>
-    
-                    <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha"  />
-                    <label class="label" for="senha" id="label-senha"> </label>
-    
-                    <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha"  />
-                    <label class="label" for="senha" id="label-senha"> </label>   
-    
-                    <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha"  />
-                    <label class="label" for="senha" id="label-senha"></label>
+                    <input type="text" class="pin-input" maxlength="1" />
+                    <input type="text" class="pin-input" maxlength="1" />
+                    <input type="text" class="pin-input" maxlength="1" />
+                    <input type="text" class="pin-input" maxlength="1" />
                 </div>
-    
-                <div class="butaologin">
+                
+                <div class="butaoconfirmar">
                     <a href="mapa.html"><button class="center-button"><b>Confirmar</b></button></a>
                 </div>
     
                 <img src="Imagens/nomepreto.png" alt="Nome ParkFinder">
-            
             </div>
     
         </section>

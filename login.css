@@ -32,11 +32,9 @@ section {
     width: 100%;
 }
 
-.logintitulo{
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 30px;
-}
+
+
+/*Div Elementos Bem Vindo*/
 .bemvindo{
     width: 500px;
     height: 550px;
@@ -48,14 +46,14 @@ section {
     flex-direction: column; 
     text-align: center;
     color: white;
-    
+    font-family:Arial, Helvetica, sans-serif
 }
 
 .bemvindo img { 
     display: block; 
     margin: 0 auto; 
     margin-top: 70px; 
-    width: 70px;
+    width: 13%;
     height: auto;
 }
 
@@ -66,13 +64,33 @@ section {
     margin-bottom: 20px; 
 }
 
-.bemvindo p {
+.bemvindo h1{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top:  50px;
+    padding-bottom: 30px;
     display: block;
     margin: 5px 0;
     text-align: left;
-    font-family:Arial, Helvetica, sans-serif
-    
 }
+
+.bemvindo p{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: normal;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: block;
+    margin: 5px 0;
+    text-align: left;
+}
+/*Fim Elementos da Div Bem Vindo*/
+
 
 .login{
     background-color: white;
@@ -89,33 +107,17 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
-    
+}
+
+.login h1{
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px;
 }
 
 
 
-.pbemvin{
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-top:  50px;
-    padding-bottom: 30px;
-}
-.facalog{
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 100;
-    line-height: normal;
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
-
-
-.norma{
+.login p{
     color: #453F3F;
     font-size: 13px;
     font-style: normal;
@@ -124,10 +126,10 @@ section {
     letter-spacing: -0.333px;
 }
 
+
+/*Dados Login*/
 .input-container {
     position: relative;
-    
-
 }
 
 input {
@@ -138,8 +140,6 @@ input {
     box-sizing: border-box;
     padding: 16px;
     background: #EAE7E7;
-    
-   
 }
 
 .label {
@@ -163,25 +163,26 @@ input {
     font-weight: 100; 
 }
 
-
 .text{
     color: #ADA4A4;
     font-size: 11px;
     font-weight: 100; 
 }
+/*Fim Dados Login*/
 
+
+/*Esqueceu Senha*/
 .lin{
     float: right;
     font-size: 11px;
     color: #0037A0;
-
 }
 
 a {
-    text-decoration: none;
-    
+    text-decoration: none; 
 }
 
+/*Botâo Login*/
 button{
     width: 200px;
     height: 40px;
@@ -201,24 +202,112 @@ button{
 }
 
 .butaologin button {
-    position: absolute; /* Defina a posição como absoluta */
-    left: 50%; /* Posicione o botão no meio horizontal da .login */
-    transform: translateX(-50%); /* Centralize o botão horizontalmente */
-    /* Outros estilos do botão, se necessário */
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%); 
 }
+/*Fim Botâp*/
 
-.texcadas{
+
+/*Não possui conta*/
+.ultimocadastro p{
     font-size: 11px;
     color: #A19494;
 }
 
-.ultimocadastr{
+.ultimocadastro{
     text-align: center;
     margin-top: auto;
     margin-bottom: 0px;
 }
 
-.cadas{
+.ultimocadastro p a{
     font-size: 11px;
     color: #0037A0;
+}
+/*FIM*/
+
+/*MOBILE*/
+@media screen and (max-width: 768px) {
+
+    html, body {
+        overflow-x: hidden;
+        margin: 0;
+        border: 0;
+        padding: 0;
+      }
+    main{ 
+        margin-bottom: 50px;
+    }
+    section {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .fundo{
+        display: none;
+    }
+
+
+    /*Bem Vindo*/
+    .bemvindo {
+        width: 100%;
+        height: auto;
+        margin-top: 0;
+        order: 1;
+        float: left;
+        border-radius: 0px ;
+        margin-bottom: 10%;
+        margin-left: 0;
+        margin-right: 0;
+        border: 0;
+    }
+
+    .bemvindo img{
+        width: 7%;
+        height: auto;
+        margin-top: 30px;
+    }
+
+    .bemvindo img:last-child{
+        width: 80px;
+        height: auto;
+    }
+
+    .bemvindo h1 {
+        font-size: 25px;
+        padding-left: 15%;
+        padding-right: 15%;
+        padding-top:  10%;
+        padding-bottom: 7%;
+        text-align: left;
+    }
+
+    .bemvindo p {
+        font-size: 14px;
+        padding-left: 15%;
+        padding-right: 15%;
+        text-align: left;
+        padding-bottom: 20%;
+    }
+    /*Fim Bem Vindo*/
+
+    .login{
+        width: 70%;
+        margin-left: 0;  
+        border: 10%; 
+        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.548);
+    }
+
+    input{
+        width: 100%;
+    }
+
+   .butaologin{
+        margin-bottom: 20px;
+    }
+
+    
+
 }
