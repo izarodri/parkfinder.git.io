@@ -297,7 +297,6 @@ button{
         width: 70%;
         margin-left: 0;  
         border: 10%; 
-        box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.548);
     }
 
     input{
