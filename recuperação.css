@@ -132,7 +132,7 @@ a {
     }
     
     .recu{
-        width: 75%;
+        width: 85%;
         height: auto;
         margin: 10px;
        
@@ -140,7 +140,7 @@ a {
 
     .recu p {
         margin: 10%;
-        font-size: 17px;
+        font-size: 20px;
         width: 70%;
 
     }
@@ -148,7 +148,7 @@ a {
     .recu h1{
         margin-left: 10%;
         margin-right: 10%;
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .recu h5 {
