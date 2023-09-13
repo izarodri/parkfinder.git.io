@@ -46,13 +46,14 @@ section {
     align-items: center;
 }
 
-.recup{
+.recu p{
     font-size: 20px;
 }
 
-.recupp{
+.recu h5{
     margin-right: 250px;
      color: #bbb9b9;
+     font-size: 20px;
 }
 
 .recu img{
@@ -69,7 +70,7 @@ section {
     margin-bottom: 20px; 
 }
 
-.titu{
+.recu h1{
     width: 220px;
     margin-top: 30px;
     font-size: 25px;
@@ -120,4 +121,62 @@ button{
 a {
     text-decoration: none;
     
+}
+
+@media screen and (max-width: 768px) {
+    html,body{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #a0a0a0;
+    }
+    
+    .recu{
+        width: 75%;
+        height: auto;
+        margin: 10px;
+       
+    }
+
+    .recu p {
+        margin: 10%;
+        font-size: 17px;
+        width: 70%;
+
+    }
+
+    .recu h1{
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 20px;
+    }
+
+    .recu h5 {
+        margin-left: 20%;
+    }
+    
+
+    input{
+        margin: 2px;
+    }
+
+    .fundo{
+        display: none;
+    }
+
+    .black{
+        width: 50%;
+        height: 100%;
+        background-color: black;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+
+    .butaologin{
+        margin-bottom: 20px;
+    }
 }

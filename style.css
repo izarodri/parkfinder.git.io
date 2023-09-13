@@ -267,10 +267,9 @@ a {
         position: absolute;
         bottom: 0;
         margin-bottom: 50px;
-        max-width: 19%;
-        max-height: auto;
-        min-width: 1%;
-        min-height: auto;
+        width: 19%;
+        height: auto;
+       
     }
 
     .divinicio h3{
@@ -291,13 +290,23 @@ a {
         font-size: 100%;
     }
 
-
-    @media screen and (min-width: 769px) {
-        .imagemobile {
-          display: none;
-        }
-        .imagemobile img{
-            display: none;
-        }
-      }
+    .imagemlogomobile{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
+
+@media screen and (min-width: 780px) {
+    .imagemobile {
+      display: none !important;
+    }
+    
+    .imagemlogomobile{
+        display: none !important;
+    }
+
+.imagemlogomobile img{
+    display: none !important;
+}
+  }
