@@ -176,6 +176,12 @@ input {
     float: right;
     font-size: 11px;
     color: #0037A0;
+    
+}
+#message{
+    position: absolute;
+    color: red;
+    font-size: 9px;
 }
 
 a {
@@ -283,6 +289,7 @@ button{
         padding-bottom: 7%;
         text-align: left;
     }
+   
 
     .bemvindo p {
         font-size: 14px;

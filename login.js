@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const email = document.getElementById("email");
     var senha = document.getElementById("senha");
     const botao = document.getElementById("botaocad");
+    const linkrec = document.getElementById("linkrec");
+    const rec = document.getElementById("message")
 
    
     function logar(dados) {
@@ -35,6 +37,8 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Dados incorretos!");
         });
     }
+
+    
     
     botao.addEventListener("click", mostrar);
     document.addEventListener("keydown", function(event) {
@@ -45,12 +49,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
 
+    linkrec.addEventListener("click", function(event){
+        const emailv = email.value;
+        if (emailv!==""){
+            event.preventDefault
+            const emailz = email.value
+            sessionStorage.setItem("email", emailz)
+            window.location.href ="recuperação.html"
+                
+        }else{
+            rec.innerText="Digite o email para recuperar"
+            email.style.borderColor = "red"
+        }   
+
+    })
+    email.addEventListener("focus", function(event){
+        email.style.borderColor = "white"
+        rec.innerText = ""
+    })
+
 function mostrar(event) {
     event.preventDefault();
 
     if (email.value === "" || senha.value === "" ) {
         alert("Preencha todos os campos antes de prosseguir.");
         return;
+
     }else{
 
         const dados = {

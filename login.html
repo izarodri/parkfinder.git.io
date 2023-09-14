@@ -34,6 +34,7 @@
                 <div class="input-container ">
                     <div class="placeholder">
                         <input type="text" id="email" name="seuemail" aria-labelledby="label-email"placeholder="Seu Email" />
+                        <div id="message"></div>
                         <label class="label" for="femail" id="label-femail"></label>
                     </div>
                 </div>
@@ -46,14 +47,14 @@
                     </div>
                 </div>
 
-                <p><a class="lin" href="recuperação.html">Esqueceu sua senha?</a></p>
-                <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
+                <p id="linkrec" ><a  id="linkrec" class="lin"  title="Digite o email">Esqueceu sua senha?</a></p>
+                
                 <div class="butaologin">
                     <button id="botaocad" class="center-button"><b>Login</b></button>
                 </div>
 
                 <div class="ultimocadastro"> 
-                    <p>Não possui uma conta? <a href="cadastro.html"> Cadastre-se</a></p>
+                    <p>Não possui uma conta? <a  href="cadastro.html" > Cadastre-se</a></p>
                 </div>  
             </div>
     
