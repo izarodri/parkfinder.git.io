@@ -73,23 +73,15 @@ input:focus {
   border-radius: 20px;
   box-shadow: 4px 4px 4px 0px #00000040;
 }
+.info{
+  width: 111px;
+  height: 29px;
+  font-family: Inter;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+}
 #info_1{
-  width: 111px;
-  height: 29px;
-  font-family: Inter;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: center;
-}
-#info_2{
-  width: 111px;
-  height: 29px;
-  font-family: Inter;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: center;
-}
-#info_3{
   width: 95px;
   height: 39px;
   font-family: Inter;
@@ -98,7 +90,7 @@ input:focus {
   line-height: 39px;
   letter-spacing: 0em;
 }
-#info_4{
+#info_2{
   width: 95px;
   height: 39px;
   font-family: Inter;
