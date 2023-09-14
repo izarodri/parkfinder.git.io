@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
    
     function cadastrar(dados) {
         event.preventDefault();
-        fetch("http://localhost:8082/cliente", {
+        fetch("http://localhost:8082/salvar-cliente", {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const senhaValue = senha.value;
         const confsenhaValue = confsenha.value;
 
-        if (senhaValue !== confsenhaValue && confsenhaValue!==""  && senhaValue!="") {
+        if (senhaValue !== confsenhaValue && confsenhaValue!==""  && senhaValue!=="") {
             errorm.innerText = "Campo senha e confirmar senha são diferentes!"
             
     }
@@ -82,16 +82,7 @@ function mostrar(event) {
             longitude: 0
         };
         cadastrar(dados);
-        if(check){
-        const dados = {
-            nome: nome.value,
-            email: email.value,
-            senha: senha.value,
-            latitude: 0,
-            longitude: 0
-        };
-        cadastrar(dados);
-    }
+     
     } else {
         alert("Campos senha e confirmar senha diferentes!");
     }

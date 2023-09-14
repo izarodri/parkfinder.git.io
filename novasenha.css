@@ -13,6 +13,11 @@ main {
     height: 100vh;
     position: relative;
 }
+#error-message{
+    position: absolute;
+    font-size: 11px;
+    margin-left: 10%;
+}
 
 section {
     display: flex;
@@ -141,7 +146,9 @@ button{
     color: white;
     border: 1px solid black;
     margin-bottom: 7px;
+    cursor: pointer
 }
+
 
 .butaoalterar {
     display: flex;

@@ -176,6 +176,7 @@ input {
     float: right;
     font-size: 11px;
     color: #0037A0;
+    cursor: pointer
     
 }
 #message{
