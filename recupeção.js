@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const num2 = document.getElementById("num2");
   const num3 = document.getElementById("num3");
   const num4 = document.getElementById("num4");
+  const aviso = document.getElementById("aviso")
   var codigoreal;
   var codigodig;
   const botaoadd = document.getElementById("botao");
@@ -14,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
   botaoadd.style.backgroundColor = "#a0a0a0"
   botaoadd.style.borderColor = "#a0a0a0"
   botaoadd.setAttribute("title", "Envie o email primeiro")
+
   teste()
+
   function teste(){
   botaoadd.addEventListener('click', function () {
     if (num1.value !== "" && num2.value !== "" && num3.value !== "" && num4.value !== "") {
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
       num3.style.borderColor="black"
       num4.style.borderColor="black"
       if (codigodig === codigoreal) {
-        window.location.href = "novasenha.html"// Redirecionamento
+        window.location.href = "novasenha.html"
       }
     } else {
       num1.style.borderColor="red"
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   botaosend.addEventListener("click", function () {
     desativarBotao();
+    aviso.innerText="Enviamos o código no seu e-mail";
     mandar();
     atualizarTemporizador();
 
