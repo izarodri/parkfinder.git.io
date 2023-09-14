@@ -41,15 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
 
-    
-    
-    botao.addEventListener("click", mostrar);
-    document.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) { 
-            mostrar(event);
-        }
-    });
-
     function checarEmail(emailParam) {
       
         fetch("http://localhost:8082/check-email", {
