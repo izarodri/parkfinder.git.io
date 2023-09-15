@@ -108,7 +108,7 @@ async function setVagas(map) {
         const vagas = await getVagas();
 
         vagas.forEach(vaga => {
-            const { latitude, longitude, id, tipo} = vaga; 
+            const { latitude, longitude, id} = vaga; 
 
             function createCustomIcon(color) { //função para customizar o icone
                 return L.divIcon({
