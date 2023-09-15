@@ -110,7 +110,7 @@ async function setVagas(map) {
         vagas.forEach(vaga => {
             const { latitude, longitude, id} = vaga; 
 
-            function createCustomIcon(color) { //função para customizar o icone
+           /* function createCustomIcon(color) { //função para customizar o icone
                 return L.divIcon({
                     className: 'custom-icon',
                     html: '<div style="background-color: ' + color + ';"></div>',
@@ -133,9 +133,9 @@ async function setVagas(map) {
 
             }else{
                 customIcon = createCustomIcon(defaultColor);
-            }
+            }*/
 
-            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
+            const marker = L.marker([latitude, longitude]/*, { icon: customIcon }*/).addTo(map);
             marker.bindPopup(`ID da Vaga: ${id}`);
         });
     } catch (error) {
