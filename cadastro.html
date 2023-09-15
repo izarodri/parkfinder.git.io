@@ -26,37 +26,41 @@
                     <p>Nome</p>
                     <div class="input-container ">
                         <div class="placeholder">
-                            <input  type="text" id="nome" name="seunome" aria-labelledby="label-nome"
-                            placeholder="Adicionar Nome" />
+                            <input type="text"  id="nome" name="seunome"  aria-labelledby="label-nome"
+                            placeholder="Adicionar Nome" data-placeholder="Adicionar Nome"/>
                             <label class="label" for="fnome" id="label-fnome"></label>
                         </div>
+                        <div class="campo-vazio" id="error-nome"></div>
                     </div>
 
                     <p>Email</p>
                     <div class="input-container ">
                         <div class="placeholder">
                             <input tyle="margin-bottom: 9px;" type="text" id="email" name="seuemail" aria-labelledby="label-email"
-                            placeholder="Adicionar Email" />
+                            placeholder="Adicionar Email" data-placeholder="Adicionar Email"/>
                             <label class="label" for="femail" id="label-femail"></label>
                         </div>
+                        <div class="campo-vazio" id="error-email"> </div>
                     </div>
 
                     <p>Criar Senha</p>
                     <div class="input-container">
                         <div class="placeholder">
-                            <input  type="password" id="senha" name="suasenha" aria-labelledby="label-senha" 
-                            placeholder="Adicionar Senha" />
+                            <input  type="password" id="senha" class="campo-vazio" name="suasenha" aria-labelledby="label-senha" 
+                            placeholder="Adicionar Senha" data-placeholder="Adicionar Senha"/>
                             <label class="label" for="senha" id="label-senha"></label>
                         </div>
+                        <div class="campo-vazio " id="error-senha"></div>
                     </div>
 
-                    <p>Confirmar Senha</p>
+                    <p style="margin-top: 20px;">Confirmar Senha</p>
                     <div class="input-container">
                         <div class="placeholder">
                             <input type="password" id="confsenha" name="suasenha" aria-labelledby="label-senha" 
-                            placeholder="Confirme sua Senha" />
+                            placeholder="Confirme sua Senha" data-placeholder="Confirme sua senha" />
                             <label class="label" for="senha" id="label-senha"></label>
                         </div>
+                        <div class="campo-vazio" id="error-confsenha"></div>
                         <div id="error-message"></div>
                     </div>
                     <!--Fim dos Dados do Cadastro-->
@@ -65,6 +69,7 @@
                     <div class="butaocadastrar">
                         <button><b id="botaocad">Cadastrar</b></button>
                     </div>
+                    <div class="campo-vazio" id="error-botao"></div>
     
                     <div class="japossuiconta"> 
                         <p>Já possui uma conta? <a href="login.html"> Faça Login</a></p>

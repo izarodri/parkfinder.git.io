@@ -117,6 +117,10 @@ input {
     margin-bottom: 8px;
 }
 
+.placeholder-red::placeholder{
+    color: #ff0000;
+}
+
 .input-container .placeholder input[type="password"]  { 
     color: #3b3b3b;
     font-size: 11px;

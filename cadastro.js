@@ -6,6 +6,76 @@ document.addEventListener("DOMContentLoaded", function() {
     const botao = document.getElementById("botaocad");
     const errorm = document.getElementById("error-message") 
     var check = false;
+
+    // Adiciona um evento de clique ao botão de cadastro
+    botao.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        // Limpa mensagens de erro anteriores
+        errorm.innerText = '';
+
+        // Verifica se os campos estão vazios e destaque o placeholder em vermelho
+        let camposVazios = false;
+
+        if (nome.value === "") {
+            mostrarErro(nome, "", "error-nome");
+            substituirPlaceholder(nome, "Campo obrigatório");
+            camposVazios = true;
+        }
+
+        if (email.value === "") {
+            mostrarErro(email, "", "error-email");
+            substituirPlaceholder(email, "Campo obrigatório");
+            camposVazios = true;
+        }
+
+        if (senha.value === "") {
+            mostrarErro(senha, "", "error-senha");
+            substituirPlaceholder(senha, "Campo obrigatório");
+            camposVazios = true;
+        }
+
+        if (confsenha.value === "") {
+
+            mostrarErro(confsenha, "", "error-confsenha");
+            substituirPlaceholder(confsenha, "Campo obrigatório");
+            camposVazios = true;
+        }
+
+        if (verificarSenha()) {
+            const dados = {
+                nome: nome.value,
+                email: email.value,
+                senha: senha.value,
+                latitude: 0,
+                longitude: 0
+            };
+            
+        } else {
+            mostrarErro(senha, "", "error-senha");
+            substituirPlaceholder(senha, "Campo senha e confirmar senha estão diferentes!");
+            mostrarErro(confsenha, "", "error-confsenha");
+            substituirPlaceholder(confsenha, "Campo senha e confirmar senha estão diferentes!");
+            
+        }
+    })
+
+                // Adiciona um ouvinte de evento de entrada para cada campo
+        nome.addEventListener("input", function () {
+        alterarCorBorda(nome);
+        });
+    
+        email.addEventListener("input", function () {
+        alterarCorBorda(email);
+        });
+    
+        senha.addEventListener("input", function () {
+        alterarCorBorda(senha);
+        });
+    
+        confsenha.addEventListener("input", function () {
+        alterarCorBorda(confsenha);
+        });
     
     document.addEventListener("keydown", function(event) {
         if (event.keyCode === 13) {
@@ -13,7 +83,12 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
    
+
     function cadastrar(dados) {
+
+        if (nome.value === "" || email.value === "" || senha.value === "" || confsenha.value === "") {
+            return;
+        }
         event.preventDefault();
         fetch("http://localhost:8082/salvar-cliente", {
             headers: {
@@ -35,14 +110,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (data === "ok") {
                 check = true
-                alert("Usuario cadastrado com sucesso")
                 window.location.href = "login.html";
                
             } 
         })
-        .catch(function (error) {
+                .catch(function (error) {
             console.error("Erro:", error);
-            alert("Email digitado já está cadastrado!");
+            mostrarErro(email, "O email digitado já está cadastrado!", "error-email");
+            substituirPlaceholder(email, "Digite outro endereço de email!");   
         });
     }
 
@@ -64,15 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
          }
 }
-function mostrar(event) {
+    function mostrar(event) {
     event.preventDefault();
   
-
-    if (nome.value === "" || email.value === "" || senha.value === "" || confsenha.value === "") {
-        alert("Preencha todos os campos antes de prosseguir.");
-        return;
-    }
-
     if (verificarSenha()) {
         const dados = {
             nome: nome.value,
@@ -84,9 +153,31 @@ function mostrar(event) {
         cadastrar(dados);
      
     } else {
-        alert("Campos senha e confirmar senha diferentes!");
+        mostrarErro(confsenha, "", "error-confsenha");
     }
 
 }
-    
+
+    function mostrarErro(campo, mensagem, erroId) {
+    campo.style.border = '2px solid red';
+    campo.classList.add("placeholder-red");
+    var errorDiv = document.getElementById(erroId);
+    errorDiv.innerHTML = mensagem;
+
+    errorDiv.style.fontSize = '12px'; // Define o tamanho da fonte
+    errorDiv.style.color = 'red';
+    }
+
+    // Função para alterar a cor da borda
+    function alterarCorBorda(campo) {
+    if (campo.value == "") {
+        campo.style.borderColor = "red"; 
+    } else {
+        campo.style.borderColor = "black"; 
+    }
+}
+
+    function substituirPlaceholder(campo, novoPlaceholder){
+        campo.setAttribute('placeholder', novoPlaceholder)
+    }
 });

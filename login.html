@@ -31,12 +31,13 @@
                 <h1>Login</h1>
                 
                 <p>Email</p>
-                <div class="input-container ">
+                <div style="margin-bottom: 10px;" class="input-container ">
                     <div class="placeholder">
                         <input type="text" id="email" name="seuemail" aria-labelledby="label-email"placeholder="Seu Email" />
                         <div id="message"></div>
                         <label class="label" for="femail" id="label-femail"></label>
                     </div>
+                    <div class="campo-vazio " id="error-email"></div>
                 </div>
 
                 <p>Senha</p>
@@ -45,6 +46,7 @@
                         <input type="password" id="senha" name="suasenha" aria-labelledby="label-senha" placeholder="Sua Senha" />
                         <label class="label" for="senha" id="label-senha"></label>
                     </div>
+                    <div class="campo-vazio " id="error-senha"></div>
                 </div>
 
                 <p id="linkrec" ><a  id="linkrec" class="lin"  title="Digite o email">Esqueceu sua senha?</a></p>

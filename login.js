@@ -110,12 +110,22 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-
+    email.addEventListener("input", function () {
+        alterarCorBorda(email);
+        });
+    
+        senha.addEventListener("input", function () {
+        alterarCorBorda(senha);
+        });
+        
 function mostrar(event) {
     event.preventDefault();
 
     if (email.value === "" || senha.value === "" ) {
-        alert("Preencha todos os campos antes de prosseguir.");
+        mostrarErro(email, "", "error-email");
+        substituirPlaceholder(email, "Campo obrigatório!");
+        mostrarErro(senha, "", "error-senha");
+        substituirPlaceholder(senha, "Campo obrigatório!");
         return;
 
     }else{
@@ -129,5 +139,27 @@ function mostrar(event) {
     }
 
 }
-    
-})
+
+function mostrarErro(campo, mensagem, erroId) {
+    campo.style.border = '2px solid red';
+    campo.classList.add("placeholder-red");
+    var errorDiv = document.getElementById(erroId);
+    errorDiv.innerHTML = mensagem;
+
+    errorDiv.style.fontSize = '12px'; // Define o tamanho da fonte
+    errorDiv.style.color = 'red';
+    }
+
+    // Função para alterar a cor da borda
+    function alterarCorBorda(campo) {
+    if (campo.value == "") {
+        campo.style.borderColor = "red"; 
+    } else {
+        campo.style.borderColor = "black"; 
+    }
+}
+
+    function substituirPlaceholder(campo, novoPlaceholder){
+        campo.setAttribute('placeholder', novoPlaceholder)
+    }
+});
