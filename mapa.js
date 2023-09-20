@@ -33,13 +33,9 @@ function initMap() {
         // Exiba as informações na div 'info'
         const infoDiv_1 = document.getElementById('info_1');
         const infoDiv_2 = document.getElementById('info_2');
-        const infoDiv_3 = document.getElementById('info_3');
-        const infoDiv_4 = document.getElementById('info_4');
         const tempo1 = (tempo / 60).toFixed(2)
-        infoDiv_1.innerHTML = `Distância:`;
-        infoDiv_2.innerHTML = `Duração:`;
-        infoDiv_3.innerHTML = `${distancia}m`;
-        infoDiv_4.innerHTML = `${tempo1}min`;
+        infoDiv_1.innerHTML = `${distancia}m`;
+        infoDiv_2.innerHTML = `${tempo1}min`;
         //faz a div com o conteúdo aparecer na tela
         var mostrarDivInfo = document.getElementById('info_divEstrutura');
         mostrarDivInfo.style.display = 'block';
@@ -112,9 +108,34 @@ async function setVagas(map) {
         const vagas = await getVagas();
 
         vagas.forEach(vaga => {
-            const { latitude, longitude, id } = vaga; 
-            const marker = L.marker([latitude, longitude]).addTo(map);
-        
+            const { latitude, longitude, id} = vaga; 
+
+           /* function createCustomIcon(color) { //função para customizar o icone
+                return L.divIcon({
+                    className: 'custom-icon',
+                    html: '<div style="background-color: ' + color + ';"></div>',
+                    iconSize: [20, 20]
+                });
+            }
+
+            var customIcon;
+            if(tipo==="gratuita"){ //relativo ao tipo de vaga, terá determinada cor, neste caso é gratuita
+
+                customIcon = createCustomIcon('#9D9D9D');
+
+            }else if(tipo==="paga"){
+
+                customIcon = createCustomIcon('#FF0000');
+
+            }else if(tipo==="PCD"){
+
+                customIcon = createCustomIcon('#43BAD4');
+
+            }else{
+                customIcon = createCustomIcon(defaultColor);
+            }*/
+
+            const marker = L.marker([latitude, longitude]/*, { icon: customIcon }*/).addTo(map);
             marker.bindPopup(`ID da Vaga: ${id}`);
         });
     } catch (error) {

@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="recuperação.css">
     <link rel="icon" href="Imagens/Frame 14 (1).png" type="image/x-icon">
+    <script src="./recupeção.js"> defer</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperação de Senha da Conta </title>
@@ -57,20 +58,22 @@
             <div class="recu">
                 <img src="Imagens/logoparkbranca.png" alt="">
                 <h1>Insira o codigo de Recuperação</h1>
-                <p>Enviamos o código no seu e-mail</p>
+                <p id="aviso">Clique no botão Enviar email</p>
                 <h5><b>PIN</b></h5>
                 
     
                 <div class="placeholder">
-                    <input type="text" class="pin-input" maxlength="1" />
-                    <input type="text" class="pin-input" maxlength="1" />
-                    <input type="text" class="pin-input" maxlength="1" />
-                    <input type="text" class="pin-input" maxlength="1" />
+                    <input id="num1" type="text" class="pin-input" maxlength="1" />
+                    <input id="num2" type="text" class="pin-input" maxlength="1" />
+                    <input id="num3" type="text" class="pin-input" maxlength="1" />
+                    <input id="num4" type="text" class="pin-input" maxlength="1" />
                 </div>
                 
                 <div class="butaoconfirmar">
-                    <a href="novasenha.html"><button class="center-button"><b>Confirmar</b></button></a>
+                   <button id="botao" class="center-button"><b>Confirmar</b></button>
+                   <button id="botao1" class="center-button"><b>Enviar email</b></button>
                 </div>
+                
     
                 <img src="Imagens/nomepreto.png" alt="Nome ParkFinder">
             </div>
