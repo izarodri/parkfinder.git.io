@@ -135,3 +135,46 @@ destino.addEventListener("keydown", function(event) {
 window.onload = function () {
     initMap();
 };
+
+function mudar(){
+    const botoes = document.querySelector(".botoes");
+    const botao = document.getElementById("bntfiltro");
+    const imagem = botao.querySelector("img");
+    if (botao.style.backgroundColor!="white"){
+        botao.style.backgroundColor= "white";
+        imagem.src="Imagens/filtropreto.png";
+        botoes.style.visibility = "visible"
+    }else{
+        botao.style.backgroundColor= "black";
+        imagem.src="Imagens/filtro branco.png"
+        botoes.style.visibility = "hidden"
+    } 
+}
+
+function livre() {
+    
+    const botao = document.getElementById("btnLivre")
+    if (botao.style.backgroundColor!="rgb(157, 157, 157)"){ 
+        botao.style.backgroundColor= "#9D9D9D";
+    }else {
+        botao.style.backgroundColor= "#58D443";
+    }
+}
+
+function paga() {
+    
+    const botao = document.getElementById("btnPaga")
+    if (botao.style.backgroundColor!="rgb(70, 67, 212)"){ 
+        botao.style.backgroundColor= "#4643D4";
+    }else {
+        botao.style.backgroundColor= "#9D9D9D";
+    }
+}
+function deficiente(){
+    const botao = document.getElementById("btnDeficiente")
+    if (botao.style.backgroundColor!="rgb(67, 186, 212)"){ 
+        botao.style.backgroundColor= "#43BAD4";
+    }else {
+        botao.style.backgroundColor= "#9D9D9D";
+    }
+}

@@ -52,15 +52,75 @@ body {
     align-items: center;
   }
   
-  #divBusca img{
+#divBusca img{
     float:center;
   }
+
+#bntfiltro {
+  width: 47px;
+  height: 47px;
+  position: fixed;
+  top: 0; /* Posiciona a div no topo */
+  left: 92vw;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background: #000000;
+  border: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+#bntfiltro img{
+  height: 60%;
+  width: 70%;
+}
+
+.botoes{
+  background: rgb(253, 253, 253);
+  right: 0;
+  margin-top: 10px;
+  position: fixed;
+  width: 150px;
+  height: auto;
+  margin-right: 2.3%;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.botoes button{
+  width:140px;
+  height: 35px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-weight: 550;
+}
+#btnLivre{
+  background: #58D443;
+}
+
+#btnPaga{
+  background: #9D9D9D;
+}
+#btnDeficiente{
+  background: #9D9D9D;
+}
 
 input:focus {
     outline: none;
 }
 #map {
-  height: 700px; /* Altura do mapa com espaço para a barra superior */
+  height:  calc(100vh - 70px);
+  margin-top: 70px;
+  z-index: -1;
 }
 #info_divEstrutura{
   display: none;

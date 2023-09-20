@@ -112,8 +112,6 @@ section{
     display: flex;
     justify-content: flex-end; /* Alinhar os botões à direita */
     box-sizing: border-box;
-   
-    
     position: absolute;
     top: 20px; /* Ajuste a distância a partir do topo conforme necessário */
     right: 20px; /* Ajuste a distância a partir da direita conforme necessário */
@@ -193,10 +191,7 @@ button{
     z-index: 2;
     height: 90%;
     margin-right: 10%;
-    margin-left: 10%;
-   
-   
-    
+    margin-left: 10%; 
 }
 
 
