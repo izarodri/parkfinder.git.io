@@ -50,7 +50,7 @@ function calcularRota() {
 
     // Geocodificar o endereço de destino
     geocodificarEndereco(destino, function (destinoCoords) {
-        // Configurar os pontos de partida (estático) e destino para o controle de roteamento
+        // Configurar os pontos de partida e destino para o controle de roteamento
         routingControl.setWaypoints([userPosition, destinoCoords]);
 
         // Calcular a rota
@@ -206,7 +206,7 @@ function startGeolocationTrackingReturn() {
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(function (position) {
             userPosition = [position.coords.latitude, position.coords.longitude];
-            startGeolocationTracking([position.coords.latitude, position.coords.longitude]);
+            startGeolocationTracking(userPosition);
         }, function (error) {
             console.error('Erro na geolocalização:', error);
             alert('Não foi possível obter a localização do usuário.');
@@ -218,5 +218,5 @@ function startGeolocationTrackingReturn() {
 // Inicializa o mapa quando a página carrega
 window.onload = function () {
     initMap();
-    setTimeout(startGeolocationTrackingReturn, 10);
+    setTimeout(startGeolocationTrackingReturn, calcularRota, 10);
 };
