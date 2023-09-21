@@ -1,6 +1,6 @@
 let map;
 let routingControl;
-const pontoPartida = [-11.303361, -41.855833];
+let pontoPartida = [-11.303361, -41.855833];
 
 function initMap() {
     // Cria um mapa Leaflet no elemento 'map' com zoom máximo
@@ -151,12 +151,6 @@ destino.addEventListener("keydown", function(event) {
     }
 });
 
-
-// Inicializa o mapa quando a página carrega
-window.onload = function () {
-    initMap();
-};
-
 function mudar(){
     const botoes = document.querySelector(".botoes");
     const botao = document.getElementById("bntfiltro");
@@ -199,3 +193,21 @@ function deficiente(){
         botao.style.backgroundColor= "#9D9D9D";
     }
 }
+function startGeolocationTracking() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.watchPosition(function (position) {
+            pontoPartida = [position.coords.latitude, position.coords.longitude];
+            map.setView(pontoPartida);
+        }, function (error) {
+            console.error('Erro na geolocalização:', error);
+            alert('Não foi possível obter a localização do usuário.');
+        });
+    } else {
+        alert('Geolocalização não suportada neste navegador.');
+    }
+}
+// Inicializa o mapa quando a página carrega
+window.onload = function () {
+    initMap();
+    startGeolocationTracking();
+};
