@@ -1,11 +1,12 @@
 let map;
 let routingControl;
 let pontoPartida = [-11.303361, -41.855833];
+let userMarker = null;
 
 function initMap() {
     // Cria um mapa Leaflet no elemento 'map' com zoom máximo
     map = L.map('map').setView(pontoPartida, 19);
-
+    
     setVagas(map)
 
     // Adiciona um provedor de mapa (neste caso, OpenStreetMap)
@@ -49,7 +50,7 @@ function calcularRota() {
     // Geocodificar o endereço de destino
     geocodificarEndereco(destino, function (destinoCoords) {
         // Configurar os pontos de partida (estático) e destino para o controle de roteamento
-        routingControl.setWaypoints([pontoPartida, destinoCoords]);
+        routingControl.setWaypoints([userPosition, destinoCoords]);
 
         // Calcular a rota
         routingControl.route();
@@ -193,12 +194,18 @@ function deficiente(){
         botao.style.backgroundColor= "#9D9D9D";
     }
 }
-function startGeolocationTracking() {
+function startGeolocationTracking(position){
+    if (userMarker) {
+         map.removeLayer(userMarker); // Remove o marcador anterior, se existir
+    }
+    map.setView(position);
+    userMarker = L.marker(position).addTo(map);
+}
+function startGeolocationTrackingReturn() {
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(function (position) {
-            pontoPartida = [position.coords.latitude, position.coords.longitude];
-            map.setView(pontoPartida);
-             userMarker = L.marker(pontoPartida).addTo(map);
+            userPosition = [position.coords.latitude, position.coords.longitude];
+            startGeolocationTracking([position.coords.latitude, position.coords.longitude]);
         }, function (error) {
             console.error('Erro na geolocalização:', error);
             alert('Não foi possível obter a localização do usuário.');
@@ -207,9 +214,8 @@ function startGeolocationTracking() {
         alert('Geolocalização não suportada neste navegador.');
     }
 }
-
 // Inicializa o mapa quando a página carrega
 window.onload = function () {
     initMap();
-    setTimeout(startGeolocationTracking, 10);
+    setTimeout(startGeolocationTrackingReturn, 10);
 };
