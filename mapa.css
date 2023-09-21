@@ -120,7 +120,6 @@ input:focus {
 #map {
   height:  calc(100vh - 70px);
   margin-top: 70px;
-  z-index: -1;
 }
 #info_divEstrutura{
   display: none;

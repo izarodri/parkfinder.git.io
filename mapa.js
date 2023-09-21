@@ -198,6 +198,7 @@ function startGeolocationTracking() {
         navigator.geolocation.watchPosition(function (position) {
             pontoPartida = [position.coords.latitude, position.coords.longitude];
             map.setView(pontoPartida);
+             userMarker = L.marker(pontoPartida).addTo(map);
         }, function (error) {
             console.error('Erro na geolocalização:', error);
             alert('Não foi possível obter a localização do usuário.');
@@ -206,8 +207,9 @@ function startGeolocationTracking() {
         alert('Geolocalização não suportada neste navegador.');
     }
 }
+
 // Inicializa o mapa quando a página carrega
 window.onload = function () {
     initMap();
-    startGeolocationTracking();
+    setTimeout(startGeolocationTracking, 10);
 };
