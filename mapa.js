@@ -2,6 +2,7 @@ let map;
 let routingControl;
 let pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
+let userPosition = null;
 
 function initMap() {
     // Cria um mapa Leaflet no elemento 'map' com zoom máximo
