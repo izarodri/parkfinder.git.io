@@ -51,16 +51,17 @@ function carregarPaginaDoMapa(){
         // Inicializa o controle de roteamento
         routingControl = L.Routing.control({
             waypoints: [],
-            show: false, // Impede a exibição automática de pop-ups
+            routeWhileDragging: true,
+            show: false // Impede a exibição automática de pop-ups
         }).addTo(map);
-        routingControl.getPlan().options.routeWhileDragging = false;
 
         // Adiciona um manipulador de eventos para capturar informações de rota
         routingControl.on('routesfound', function (e) {
+            console.log(e.routes[0])
             const routes = e.routes;
             const primeiraRota = routes[0]; // Vamos pegar a primeira rota
 
-            /*// Acesse informações como tempo e distância
+            // Acesse informações como tempo e distância
             const tempo = primeiraRota.summary.totalTime;
             const distancia = (primeiraRota.summary.totalDistance)
 
@@ -72,7 +73,7 @@ function carregarPaginaDoMapa(){
             infoDiv_2.innerHTML = `${tempo1}min`;
             //faz a div com o conteúdo aparecer na tela
             var mostrarDivInfo = document.getElementById('info_divEstrutura');
-            mostrarDivInfo.style.display = 'block';*/
+            mostrarDivInfo.style.display = 'block';
         });
     }
 
@@ -83,8 +84,7 @@ function carregarPaginaDoMapa(){
         // Geocodificar o endereço de destino
         geocodificarEndereco(destino, function (destinoCoords) {
             // Configurar os pontos de partida (estático) e destino para o controle de roteamento
-
-            routingControl.setWaypoints([userPosition, destinoCoords]);
+            routingControl.setWaypoints([pontoPartida, destinoCoords]);
 
             // Calcular a rota
             routingControl.route();
@@ -104,7 +104,8 @@ function carregarPaginaDoMapa(){
                     const resultado = data[0];
                     const latitude = resultado.lat;
                     const longitude = resultado.lon;
-
+                    console.log(latitude, longitude)
+                    console.log(resultado)
                     callback([latitude, longitude]);
                 } else {
                     alert('Nenhum resultado encontrado para o endereço de destino: ' + endereco);
@@ -143,28 +144,25 @@ function carregarPaginaDoMapa(){
             const vagas = await getVagas();
 
             vagas.forEach(vaga => {
-                const { latitude, longitude, id, tipo, ocupado} = vaga; 
+                const { latitude, longitude, id, tipo} = vaga; 
 
                 var urlIcon;
-                if(tipo === "gratuita"){ //relativo ao tipo de vaga, terá determinada cor, neste caso é gratuita
-                    urlIcon = 'Imagens/pinolivre.png'
+                if(tipo==="gratuita"){ //relativo ao tipo de vaga, terá determinada cor, neste caso é gratuita
 
-                }else if(tipo === "paga"){
-                    urlIcon = 'Imagens/pinopaga.png'
+                    urlIcon = 'imagens/pinolivre.png'
 
-                }else if(tipo === "pcd"){
-                    urlIcon = 'Imagens/vagadeficiente.png'
+                }else if(tipo==="paga"){
 
-                }else if (tipo === 'paga' || tipo === 'gratuita' && ocupado == true) {
-                    urlIcon = 'Imagens/pinoocupado.png'
+                    urlIcon = 'imagens/pinopaga.png.png'
 
-                } else if (tipo === 'pcd' && ocupado == true){
-                    urlIcon = 'Imagens/vagadeficienteocupada.png'
-                }
+                }else if(tipo==="PCD"){
 
+                    urlIcon = 'imagens/vagadeficiente.png'
+
+                }else if (tipo === "PCD")
                 var customIcon = L.icon({
                     iconUrl: urlIcon, 
-                    iconSize: [25, 41], 
+                    iconSize: [32, 52], 
                     iconAnchor: [16, 32] 
                 });
 
@@ -185,9 +183,51 @@ function carregarPaginaDoMapa(){
         }
     });
 
+    function mudar(){
+        const botoes = document.querySelector(".botoes");
+        const botao = document.getElementById("bntfiltro");
+        const imagem = botao.querySelector("img");
+        if (botao.style.backgroundColor!="white"){
+            botao.style.backgroundColor= "white";
+            imagem.src="Imagens/filtropreto.png";
+            botoes.style.visibility = "visible"
+        }else{
+            botao.style.backgroundColor= "black";
+            imagem.src="Imagens/filtro branco.png"
+            botoes.style.visibility = "hidden"
+        } 
+    }
+    
+    function livre() {
+        
+        const botao = document.getElementById("btnLivre")
+        if (botao.style.backgroundColor!="rgb(157, 157, 157)"){ 
+            botao.style.backgroundColor= "#9D9D9D";
+        }else {
+            botao.style.backgroundColor= "#58D443";
+        }
+    }
+    
+    function paga() {
+        
+        const botao = document.getElementById("btnPaga")
+        if (botao.style.backgroundColor!="rgb(70, 67, 212)"){ 
+            botao.style.backgroundColor= "#4643D4";
+        }else {
+            botao.style.backgroundColor= "#9D9D9D";
+        }
+    }
+    function deficiente(){
+        const botao = document.getElementById("btnDeficiente")
+        if (botao.style.backgroundColor!="rgb(67, 186, 212)"){ 
+            botao.style.backgroundColor= "#43BAD4";
+        }else {
+            botao.style.backgroundColor= "#9D9D9D";
+        }
+    }
     function startGeolocationTracking(position){
         if (userMarker) {
-             map.removeLayer(userMarker); 
+             map.removeLayer(userMarker); // Remove o marcador anterior, se existir
         }
         map.setView(position);
         userMarker = L.marker(position).addTo(map);
@@ -208,47 +248,4 @@ function carregarPaginaDoMapa(){
     initMap();
     setTimeout(startGeolocationTrackingReturn, calcularRota, 10)
 
-}
-
-function mudar(){
-    const botoes = document.querySelector(".botoes");
-    const botao = document.getElementById("bntfiltro");
-    const imagem = botao.querySelector("img");
-    if (botao.style.backgroundColor!="white"){
-        botao.style.backgroundColor= "white";
-        imagem.src="Imagens/filtropreto.png";
-        botoes.style.visibility = "visible"
-    }else{
-        botao.style.backgroundColor= "black";
-        imagem.src="Imagens/filtro branco.png"
-        botoes.style.visibility = "hidden"
-    } 
-}
-
-function livre() {
-    
-    const botao = document.getElementById("btnLivre")
-    if (botao.style.backgroundColor!="rgb(157, 157, 157)"){ 
-        botao.style.backgroundColor= "#9D9D9D";
-    }else {
-        botao.style.backgroundColor= "#58D443";
-    }
-}
-
-function paga() {
-    
-    const botao = document.getElementById("btnPaga")
-    if (botao.style.backgroundColor!="rgb(70, 67, 212)"){ 
-        botao.style.backgroundColor= "#4643D4";
-    }else {
-        botao.style.backgroundColor= "#9D9D9D";
-    }
-}
-function deficiente(){
-    const botao = document.getElementById("btnDeficiente")
-    if (botao.style.backgroundColor!="rgb(67, 186, 212)"){ 
-        botao.style.backgroundColor= "#43BAD4";
-    }else {
-        botao.style.backgroundColor= "#9D9D9D";
-    }
 }
