@@ -110,34 +110,31 @@ async function setVagas(map) {
         const vagas = await getVagas();
 
         vagas.forEach(vaga => {
-            const { latitude, longitude, id} = vaga; 
+            const { latitude, longitude, id, tipo} = vaga; 
 
-           /* function createCustomIcon(color) { //função para customizar o icone
-                return L.divIcon({
-                    className: 'custom-icon',
-                    html: '<div style="background-color: ' + color + ';"></div>',
-                    iconSize: [20, 20]
-                });
-            }
+           
 
-            var customIcon;
+            var urlIcon;
             if(tipo==="gratuita"){ //relativo ao tipo de vaga, terá determinada cor, neste caso é gratuita
 
-                customIcon = createCustomIcon('#9D9D9D');
+                urlIcon = 'imagens/pinolivre.png'
 
             }else if(tipo==="paga"){
 
-                customIcon = createCustomIcon('#FF0000');
+                urlIcon = 'imagens/pinopaga.png.png'
 
             }else if(tipo==="PCD"){
 
-                customIcon = createCustomIcon('#43BAD4');
+                urlIcon = 'imagens/vagadeficiente.png'
 
-            }else{
-                customIcon = createCustomIcon(defaultColor);
-            }*/
+            }else if (tipo === "PCD")
+            var customIcon = L.icon({
+                iconUrl: urlIcon, 
+                iconSize: [32, 52], 
+                iconAnchor: [16, 32] 
+            });
 
-            const marker = L.marker([latitude, longitude]/*, { icon: customIcon }*/).addTo(map);
+            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
             marker.bindPopup(`ID da Vaga: ${id}`);
         });
     } catch (error) {
@@ -218,5 +215,5 @@ function startGeolocationTrackingReturn() {
 // Inicializa o mapa quando a página carrega
 window.onload = function () {
     initMap();
-    setTimeout(startGeolocationTrackingReturn, 10);
+    setTimeout(startGeolocationTrackingReturn, calcularRota, 10);
 };
