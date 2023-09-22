@@ -57,6 +57,7 @@ function calcularRota() {
         routingControl.route();
     });
 }
+setTimeout(calcularRota, 10);
 
 function geocodificarEndereco(endereco, callback) {
     // Montar a URL da API
@@ -218,5 +219,5 @@ function startGeolocationTrackingReturn() {
 // Inicializa o mapa quando a página carrega
 window.onload = function () {
     initMap();
-    setTimeout(startGeolocationTrackingReturn, calcularRota, 10);
+    setTimeout(startGeolocationTrackingReturn, 10);
 };
