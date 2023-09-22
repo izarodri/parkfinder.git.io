@@ -92,12 +92,15 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         fetch("http://localhost:8082/salvar-cliente", {
             headers: {
-                'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
             method: "POST",
+            
             body: JSON.stringify(dados)
         })
+        // Resto do código...
+        
         .then(function (res) {
             if (res.status === 200) {
                 return res.text(); 
@@ -106,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
         .then(function (data) {
-
 
             if (data === "ok") {
                 check = true

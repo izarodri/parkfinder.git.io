@@ -11,6 +11,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 </head>
+
 <body>
     <main>
         <section>
@@ -21,12 +22,17 @@
                     <input type="text" id="destino" placeholder="Pesquisar...."/>
                     <button id="btnBusca" type="button" onclick="calcularRota()"><img src="Imagens/Vector.png" alt="Pesquisar"></button>
                 </div>
-
-                <div id="map">
-                </div> 
+                <button id="bntfiltro" type="button" onclick="mudar()"><img src="Imagens/filtro branco.png" alt="filtro"></button>
+                <div class="botoes">
+                    <button id="btnLivre" type="button" onclick="livre()">ZONA LIVRE</button>
+                    <button id="btnPaga" type="button" onclick="paga()">ZONA PAGA</button>
+                    <button id="btnDeficiente" type="button" onclick="deficiente()">ZONA DEFICIENTE</button>
+                </div>
+                
+               
              </div>    
-                      
-                <div id="info_divEstrutura">
+             <div id="map">
+                <!--<div id="info_divEstrutura">
                     <div id="separa_1">
                         <div class="info"><p>Distância:</p></div>
                         <div id="info_1"></div>   
@@ -35,8 +41,8 @@
                         <div class="info"><p>Duração:</p></div>
                         <div id="info_2"></div>                        
                     </div>
-
-                </div>
+                </div>-->
+            </div>       
         </section>
     </main>
     <script type="text/javascript" src="mapa.js"></script>

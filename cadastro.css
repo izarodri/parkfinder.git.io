@@ -10,7 +10,10 @@ body {
     font-size: 12px;
     font-weight: bold;
 }
+#error-email{
+    position: absolute;
 
+}
 
 main {
     display: flex;
@@ -158,6 +161,8 @@ button{
     color: white;
     border: 1px solid black;
     margin-bottom: 7px;  
+    cursor: pointer;
+
 }
 
 .butaocadastrar button {

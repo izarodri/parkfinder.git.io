@@ -24,15 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 throw new Error("Erro no servidor");
             }
         })
-        .then(function (data) {
-
-    
-
-            if (data === "Login bem-sucedido") {
-                window.location.href = "mapa.html";
-            } else {
-                alert(data);
-            }
+        .then(function (token) {
+   
+            sessionStorage.setItem("token", token);
+            window.location.href = "mapa.html";
         })
         .catch(function (error) {
             console.error("Erro:", error);
