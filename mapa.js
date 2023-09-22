@@ -57,7 +57,6 @@ function calcularRota() {
         routingControl.route();
     });
 }
-setTimeout(calcularRota, 10);
 
 function geocodificarEndereco(endereco, callback) {
     // Montar a URL da API
