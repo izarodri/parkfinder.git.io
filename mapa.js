@@ -84,7 +84,7 @@ function carregarPaginaDoMapa(){
         // Geocodificar o endereço de destino
         geocodificarEndereco(destino, function (destinoCoords) {
             // Configurar os pontos de partida (estático) e destino para o controle de roteamento
-            routingControl.setWaypoints([pontoPartida, destinoCoords]);
+            routingControl.setWaypoints([userPosition, destinoCoords]);
 
             // Calcular a rota
             routingControl.route();
@@ -245,7 +245,6 @@ function carregarPaginaDoMapa(){
             alert('Geolocalização não suportada neste navegador.');
         }
     }
-    initMap();
-    setTimeout(startGeolocationTrackingReturn, calcularRota, 10)
-
+        initMap();
+        setTimeout(startGeolocationTrackingReturn, 10);
 }
