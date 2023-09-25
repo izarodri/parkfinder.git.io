@@ -84,10 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Geocodificar o endereço de destino
         geocodificarEndereco(destino, function (destinoCoords) {
             // Configurar os pontos de partida (estático) e destino para o controle de roteamento
-            routingControl.setWaypoints([userPosition, destinoCoords]);
+            setTimeout(routingControl.setWaypoints([userPosition, destinoCoords]), 10);
 
             // Calcular a rota
-            setTimeout(routingControl.route(), 10);
+            routingControl.route();
         });
     }
 
