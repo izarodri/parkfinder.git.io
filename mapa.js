@@ -175,14 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    const destino = document.getElementById('destino');
-
-    destino.addEventListener("keydown", function(event) {
-        if (event.keyCode === 13) {
-            calcularRota();
-        }
-    });
-
     function mudar(){
         const botoes = document.getElementsByClassName("botoes");
         const botao = document.getElementById("bntfiltro");
@@ -237,6 +229,12 @@ document.addEventListener("DOMContentLoaded", function () {
             navigator.geolocation.watchPosition(function (position) {
                 userPosition = [position.coords.latitude, position.coords.longitude];
                 startGeolocationTracking(userPosition);
+                const destino = document.getElementById('destino');
+                destino.addEventListener("keydown", function(event) {
+                    if (event.keyCode === 13) {
+                        calcularRota();
+                    }
+    });
             }, function (error) {
                 console.error('Erro na geolocalização:', error);
                 alert('Não foi possível obter a localização do usuário.');
