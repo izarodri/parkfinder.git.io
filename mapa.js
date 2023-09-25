@@ -1,3 +1,4 @@
+/*
 document.addEventListener("DOMContentLoaded", function () {
     // Realize a solicitação para obter o perfil do cliente
     fetch("http://localhost:8082/perfil-cliente", {
@@ -24,7 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "login.html";
     });
 });
-
+*/
+carregarPaginaDoMapa()
 function carregarPaginaDoMapa(){
 
     let map;

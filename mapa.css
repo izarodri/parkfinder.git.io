@@ -56,6 +56,19 @@ body {
     float:center;
   }
 
+.resultado{
+  background: rgb(253, 253, 253);
+  left: 0;
+  margin-top: 10px;
+  width: 150px;
+  height: auto;
+  margin-right: 2.3%;
+  
+  padding: 7px;
+  border-radius: 10px;
+  
+}
+
 #bntfiltro {
   width: 47px;
   height: 47px;
@@ -91,6 +104,7 @@ body {
   align-items: center;
   padding: 7px;
   border-radius: 10px;
+  
 }
 
 .botoes button{
@@ -120,6 +134,7 @@ input:focus {
 #map {
   height:  calc(100vh - 70px);
   margin-top: 70px;
+  z-index: 999;
 }
 #info_divEstrutura{
   display: none;
