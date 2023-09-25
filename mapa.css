@@ -104,7 +104,6 @@ body {
   align-items: center;
   padding: 7px;
   border-radius: 10px;
-  
 }
 
 .botoes button{
@@ -137,6 +136,7 @@ input:focus {
   z-index: 999;
 }
 #info_divEstrutura{
+  z-index: 9999;
   display: none;
   position: absolute;
   background-color: white;

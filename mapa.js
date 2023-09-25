@@ -26,8 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 */
-carregarPaginaDoMapa()
-function carregarPaginaDoMapa(){
 
     let map;
     let routingControl;
@@ -186,13 +184,13 @@ function carregarPaginaDoMapa(){
     });
 
     function mudar(){
-        const botoes = document.querySelector(".botoes");
+        const botoes = document.getElementsByClassName("botoes");
         const botao = document.getElementById("bntfiltro");
         const imagem = botao.querySelector("img");
         if (botao.style.backgroundColor!="white"){
             botao.style.backgroundColor= "white";
             imagem.src="Imagens/filtropreto.png";
-            botoes.style.visibility = "visible"
+            botoes.style.visibility = "visible";
         }else{
             botao.style.backgroundColor= "black";
             imagem.src="Imagens/filtro branco.png"
@@ -248,5 +246,4 @@ function carregarPaginaDoMapa(){
         }
     }
         initMap();
-        setTimeout(startGeolocationTrackingReturn, 10);
-}
+        startGeolocationTrackingReturn();  
