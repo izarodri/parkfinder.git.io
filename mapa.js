@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Geocodificar o endereço de destino
         geocodificarEndereco(destino, function (destinoCoords) {
             // Configurar os pontos de partida (estático) e destino para o controle de roteamento
-            setTimeout(routingControl.setWaypoints([userPosition, destinoCoords]), 10);
+            routingControl.setWaypoints([userPosition, destinoCoords]);
 
             // Calcular a rota
             routingControl.route();
@@ -225,13 +225,19 @@ document.addEventListener("DOMContentLoaded", function () {
             botao.style.backgroundColor= "#9D9D9D";
         }
     }
-    function startGeolocationTracking(position){
-        if (userMarker) {
-             map.removeLayer(userMarker); // Remove o marcador anterior, se existir
-        }
-        map.setView(position);
-        userMarker = L.marker(position).addTo(map);
+function startGeolocationTracking(position) {
+    if (userMarker) {
+        map.removeLayer(userMarker); // Remove o marcador anterior, se existir
     }
+    map.setView(position);
+    userMarker = L.marker(position).addTo(map);
+
+    // Atualiza o ponto de partida no controle de roteamento
+    pontoPartida = position;
+    if (routingControl.getWaypoints().length > 0) {
+        routingControl.setWaypoints([pontoPartida, ...routingControl.getWaypoints().slice(1)]);
+    }
+}
     function startGeolocationTrackingReturn() {
         if ("geolocation" in navigator) {
             navigator.geolocation.watchPosition(function (position) {
