@@ -103,7 +103,7 @@ body {
     align-items: center;
     padding: 7px;
     border-radius: 10px;
-    z-index: 14000; /* Valor maior do que o z-index do mapa */
+    z-index: 14000;
 }
 
 
@@ -200,10 +200,10 @@ input:focus {
   }
 #info_divEstrutura {
     position: fixed;
-    background: linear-gradient(to bottom, transparent, black);
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.699));
     width: 100vw;
-    height: 30vh;
-    top: 70.5vh;
+    height: 9vh;
+    top: 91vh;
     left: 0;
     border: none;
     border-radius: 0;
@@ -211,14 +211,16 @@ input:focus {
     color: white;
 }
 .info {
-    font-size: 6vw;
+    font-size: 5vw;
 }
 #info_1 {
-    font-size: 10vw;
+    font-size: 7vw;
+    line-height: 2vh;
 }
 
 #info_2 {
-    font-size: 10vw;
+    font-size: 7vw;
+    line-height: 2vh;
 }
 
 }
