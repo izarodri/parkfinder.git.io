@@ -97,13 +97,13 @@ body {
     width: 150px;
     height: auto;
     margin-right: 2.3%;
+    visibility:hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 7px;
     border-radius: 10px;
-    z-index: 14000;
 }
 
 
