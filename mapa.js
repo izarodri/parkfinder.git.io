@@ -150,17 +150,17 @@ destino.addEventListener("keydown", function(event) {
 function adicionarAreas(){
     const circleIfba = L.circle([-11.327659, -41.864420], {
         color: '#26462029',
-        fillColor: '#26462029',
+        fillColor: '#9D9D9D3B',
         radius: 150
     }).addTo(map);
     const circleIgreja = L.circle([-11.303299, -41.857089], {
         color: '#26462029',
-        fillColor: '#26462029',
+        fillColor: '#9D9D9D3B',
         radius: 180
     }).addTo(map);
     const circleCentro = L.circle([-11.303210, -41.853551], {
         color: '#26462029',
-        fillColor: '#26462029',
+        fillColor: '#9D9D9D3B',
         radius: 200
     }).addTo(map);
 }
