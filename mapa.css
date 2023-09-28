@@ -95,20 +95,21 @@ body {
 }
 
 .botoes {
+
   background: rgb(253, 253, 253);
   right: 0;
   margin-top: 10px;
   position: fixed;
   width: 150px;
   height: auto;
-  margin-right: 2.5%;
+  margin-right: 2.3%;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 7px;
   border-radius: 10px;
-  visibility: hidden;
 }
 
 
@@ -168,7 +169,8 @@ input:focus {
   top: 40%;
   transform: translateY(-40%);
   flex-direction: column;
-  justify-content: center; /* Centralizar horizontalmente */
+  justify-content: center;
+  /* Centralizar horizontalmente */
   align-items: center;
 }
 
@@ -180,9 +182,11 @@ input:focus {
   top: 40%;
   transform: translateY(-40%);
   flex-direction: column;
-  justify-content: center; /* Centralizar horizontalmente */
+  justify-content: center;
+  /* Centralizar horizontalmente */
   align-items: center;
 }
+
 #separa_1 p {
   margin-top: 0;
   margin-bottom: 0;
@@ -218,7 +222,8 @@ input:focus {
   height: 4vh;
   font-size: 1.7vw;
   font-weight: 700;
-  line-height: 4vh;;
+  line-height: 4vh;
+  ;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
