@@ -252,7 +252,7 @@ function updateGeolocationTracking(){
     } else {
         console.log("Geolocalização não suportada pelo navegador.");
     }
-    }
+}
 
 function startGeolocationTracking() {
     navigator.geolocation.getCurrentPosition(function(position) {
