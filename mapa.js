@@ -40,16 +40,19 @@ function initMap() {
     setVagas(map)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
+        
+        
     }).addTo(map);
-    var customFormatter = L.Routing.Formatter.extend({
-        options: {
-          language: 'pt', // Set the language to Portuguese
-        },
-      });
+    
     routingControl = L.Routing.control({
         waypoints: [],
+        language: "pt-BR",
+       
             routeWhileDragging: false,
-            draggableWaypoints: false,  
+            draggableWaypoints: false,
+            show: false,
+            
+            
             createMarker: function(i, waypoint, n) {
                 return null;
             },
@@ -83,7 +86,8 @@ function initMap() {
         const zoomKeys = document.querySelector(".leaflet-control-zoom")
         const routeOption = document.querySelector(".leaflet-routing-container")
         zoomKeys.style.visibility="hidden"
-        routeOption.style.visibility = "visible"
+       /* routeOption.style.visibility = "visible"*/
+
 
         
         
@@ -140,20 +144,26 @@ async function setVagas(map) {
             if (response.status === 200) {
                 const dados = await response.json();
                 return dados;
+                
             } else {
                 throw new Error("Erro no servidor");
             }
         } catch (error) {
             console.error("Erro:", error);
-            alert("Algo deu errado ao requistar as vagas!");
+            alert("Algo deu errado ao requisitar as vagas!");
         }
     }
+    
+    
 
     try {
+        
+       
         const vagas = await getVagas();
 
         vagas.forEach(vaga => {
             const { latitude, longitude, id, tipo} = vaga; 
+           
 
             let pinoWidth = 26;
             let pinoHeight = (585/398) * pinoWidth;
@@ -162,10 +172,12 @@ async function setVagas(map) {
             if(tipo==="gratuita"){
                 urlIcon = 'Imagens/pinolivre.png'
             } else if(tipo==="paga"){
-                urlIcon = 'Imagens/pinopaga.png.png'
-            } else if(tipo==="PCD"){
+                urlIcon = 'Imagens/pinopaga.png'
+            } else if(tipo==="pcd"){
                 urlIcon = 'Imagens/vagadeficiente.png'
-            } else if (tipo === "PCD") {
+            } 
+            
+            
                 let customIcon = L.icon({
                     iconUrl: urlIcon, 
                     iconSize: [pinoWidth, pinoHeight], 
@@ -173,9 +185,10 @@ async function setVagas(map) {
                 });
                 const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
                 marker.bindPopup(`ID da Vaga: ${id}`);
-            }
+            
         });
     } catch (error) {
+       
         console.error("Erro ao buscar vagas:", error);
     }
 }

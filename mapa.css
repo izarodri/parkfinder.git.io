@@ -134,6 +134,15 @@ body {
 input:focus {
   outline: none; 
 }
+.leaflet-top{ 
+  margin-top: 5vh;
+ 
+ } 
+
+.leaflet-routing-container { 
+  visibility: hidden;
+  
+}
 
 #map {
   height: calc(100vh - 70px);
