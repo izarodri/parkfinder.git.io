@@ -183,20 +183,8 @@ destino.addEventListener("keydown", function(event) {
     }
 });
 
-function mudar(){
-    const botoes = document.getElementsByClassName("botoes");
-    const botao = document.getElementById("bntfiltro");
-    const imagem = botao.querySelector("img");
-    if (botao.style.backgroundColor!="white"){
-        botao.style.backgroundColor= "white";
-        imagem.src="Imagens/filtropreto.png";
-        botoes.style.visibility = "visible";
-    }else{
-        botao.style.backgroundColor= "black";
-        imagem.src="Imagens/filtro branco.png"
-        botoes.style.display = 'block';
-    } 
-}
+
+
 
 function livre() {
     

@@ -1,79 +1,83 @@
 body {
-    margin: 0;
-    padding: 0;
-}
-.top-bar{
-    background-color: black;
-    height: 70px;
-    width: 100%;
-    position: fixed; /* Para fixar a div no topo da página */
-    top: 0; /* Posiciona a div no topo */
-    left: 0;
-   
+  margin: 0;
+  padding: 0;
 }
 
-#divBusca{
-    background-color:#ffffff;
-    border:solid 2px #ffffff;
-    border-radius:50px;
-    width:300px;
-    height: 40px;
-    margin-left: 50px;
-    margin-top: 13px;
-    margin-bottom: 13px;
-  }
-  
-  #destino{
-    
-    float: left;
-    background-color:transparent;
-    padding-left:5px;
-    font-size:18px;
-    border:transparent;
-    height:32px;
-    width:245px;
-    margin-top: 3px;
-    margin-bottom: 4px;
-    
-    border-radius: 50px;
-    padding-left: 10px;
-    font-size: 14px;
-  }
-  
-  #btnBusca{
-    cursor: pointer;
-    border:none;
-    float:left;
-    height:40px;
-    border-radius:50px;
-    width:40px;
-    font-weight:bold;
-    background:#000000;
-    align-items: center;
-  }
-  
-#divBusca img{
-    float:center;
-  }
+.top-bar {
+  background-color: black;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  /* Para fixar a div no topo da página */
+  top: 0;
+  /* Posiciona a div no topo */
+  left: 0;
 
-.resultado{
+}
+
+#divBusca {
+  background-color: #ffffff;
+  border: solid 2px #ffffff;
+  border-radius: 50px;
+  width: 300px;
+  height: 40px;
+  margin-left: 50px;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+#destino {
+
+  float: left;
+  background-color: transparent;
+  padding-left: 5px;
+  font-size: 18px;
+  border: transparent;
+  height: 32px;
+  width: 245px;
+  margin-top: 3px;
+  margin-bottom: 4px;
+
+  border-radius: 50px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+#btnBusca {
+  cursor: pointer;
+  border: none;
+  float: right;
+  height: 40px;
+  border-radius: 50px;
+  width: 40px;
+  font-weight: bold;
+  background: #000000;
+  align-items: center;
+}
+
+#divBusca img {
+  float: center;
+}
+
+.resultado {
   background: rgb(253, 253, 253);
   left: 0;
   margin-top: 10px;
   width: 150px;
   height: auto;
   margin-right: 2.3%;
-  
+
   padding: 7px;
   border-radius: 10px;
-  
+
 }
 
 #bntfiltro {
   width: 47px;
   height: 47px;
   position: fixed;
-  top: 0; /* Posiciona a div no topo */
+  top: 0;
+  /* Posiciona a div no topo */
   left: 92vw;
   margin-top: 12px;
   margin-bottom: 12px;
@@ -84,31 +88,32 @@ body {
   align-items: center;
   border-radius: 50%;
 }
-#bntfiltro img{
+
+#bntfiltro img {
   height: 60%;
   width: 70%;
 }
 
 .botoes {
-    background: rgb(253, 253, 253);
-    right: 0;
-    margin-top: 10px;
-    position: fixed;
-    width: 150px;
-    height: auto;
-    margin-right: 2.3%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 7px;
-    border-radius: 10px;
-    z-index: 14000;
+  background: rgb(253, 253, 253);
+  right: 0;
+  margin-top: 10px;
+  position: fixed;
+  width: 150px;
+  height: auto;
+  margin-right: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border-radius: 10px;
+  visibility: hidden;
 }
 
 
-.botoes button{
-  width:140px;
+.botoes button {
+  width: 140px;
   height: 35px;
   margin-top: 3px;
   margin-bottom: 3px;
@@ -117,110 +122,198 @@ body {
   border: none;
   font-weight: 550;
 }
-#btnLivre{
+
+#btnLivre {
   background: #58D443;
 }
 
-#btnPaga{
+#btnPaga {
   background: #9D9D9D;
 }
-#btnDeficiente{
+
+#btnDeficiente {
   background: #9D9D9D;
 }
 
 input:focus {
-    outline: none;
+  outline: none;
 }
+
 #map {
-  height:  calc(100vh - 70px);
+  height: calc(100vh - 70px);
   margin-top: 70px;
-  z-index: 999;
 }
+
 #info_divEstrutura {
-    z-index: 9999;
-    display: none;
-    position: absolute;
-    background-color: white;
-    width: 40vw;
-    height: 18vh; 
-    top: 65vh; 
-    left: 3vw;
-    border-radius: 20px; 
-    box-shadow: 4px 4px 4px 0px #00000040; 
+  z-index: 9999;
+  display: none;
+  position: absolute;
+  background-color: white;
+  width: 33vw;
+  height: 18vh;
+  top: 65vh;
+  left: 3vw;
+  border-radius: 20px;
+  box-shadow: 4px 4px 4px 0px #00000018;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#separa_1 {
+  width: 30%;
+  right: 15%;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+  flex-direction: column;
+  justify-content: center; /* Centralizar horizontalmente */
+  align-items: center;
+}
+
+#separa_2 {
+  width: 30%;
+  left: 10%;
+  display: flex;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+  flex-direction: column;
+  justify-content: center; /* Centralizar horizontalmente */
+  align-items: center;
+}
+#separa_1 p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#separa_2 p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .info {
-    width: 10vw;
-    height: 3vh;
-    font-family: Inter;
-    font-size: 2vw;
-    line-height: 3vh;
-    text-align: center;
+  width: 100%;
+  height: 3vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.4vw;
+  line-height: 3vh;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 #info_1 {
-    width: 8vw;
-    height: 4vh;
-    font-family: Inter;
-    font-size: 2.5vw;
-    font-weight: 700;
-    line-height: 4vh;
-    letter-spacing: 0em;
+  width: 100%;
+  height: 4vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.7vw;
+  font-weight: 700;
+  line-height: 4vh;
+  margin: 0 auto;
 }
 
 #info_2 {
-    width: 8vw;
-    height: 4vh;
-    font-family: Inter;
-    font-size: 2.5vw;
-    font-weight: 700;
-    line-height: 4vh;
-    letter-spacing: 0em;
+  width: 100%;
+  height: 4vh;
+  font-size: 1.7vw;
+  font-weight: 700;
+  line-height: 4vh;;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#separa_1{
-  display:inline-block;
-  position: absolute;
-  right: 140px;
-}
-#separa_2{
-  display: inline-block;
-  position: absolute;
-  right: 310px;
-}
 
 @media screen and (max-width: 768px) {
- .top-bar{
-  border-radius: 0px;
- }
-  #divBusca{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 8%;
+  .top-bar {
+    border-radius: 0px;
   }
-#info_divEstrutura {
+
+  #divBusca {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 4%;
+    margin-right: 1%;
+    width: 70%;
+  }
+
+  #destino {
+    width: 80%;
+  }
+
+  #bntfiltro {
+    left: 83vw;
+    margin-right: 4%;
+    width: 43px;
+    height: 43px;
+    margin-right: 5px;
+  }
+
+  .botoes {
+    width: 96%;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding: 0%;
+    background: transparent;
+    margin: auto;
+    right: auto;
+    position: relative;
+    margin-top: 18px;
+  }
+
+  .botoes button {
+    margin-left: 3px;
+    margin-right: 3px;
+    padding: 0%;
+  }
+
+  #info_divEstrutura {
     position: fixed;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.699));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.178) 70%);
     width: 100vw;
-    height: 9vh;
-    top: 91vh;
+    height: 25vh;
+    top: 75vh;
     left: 0;
     border: none;
     border-radius: 0;
     box-shadow: none;
     color: white;
-}
-.info {
-    font-size: 5vw;
-}
-#info_1 {
-    font-size: 7vw;
-    line-height: 2vh;
-}
+  }
 
-#info_2 {
-    font-size: 7vw;
-    line-height: 2vh;
-}
+
+  #separa_1 {
+    width: 30%;
+    right: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  #separa_2 {
+    width: 30%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  .info {
+    font-size: 15px;
+    width: 100%;
+    height: 35px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+
+  #info_1 {
+    font-size: 20px;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  #info_2 {
+    font-size: 20px;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
 
 }
