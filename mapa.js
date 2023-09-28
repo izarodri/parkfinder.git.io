@@ -33,6 +33,7 @@ const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
 let userPosition = null;
 
+
 function initMap() {
     map = L.map('map').setView(pontoPartida, 19);
     setVagas(map)
@@ -41,8 +42,16 @@ function initMap() {
     }).addTo(map);
     routingControl = L.Routing.control({
         waypoints: [],
-        routeWhileDragging: true,
-        show: false
+            routeWhileDragging: false,
+            draggableWaypoints: false,  
+            createMarker: function(i, waypoint, n) {
+                return null;
+            },
+            lineOptions: {
+                styles: [
+                    {color: 'black', weight: 4}
+                ]
+            }
     }).addTo(map);
     adicionarAreas();
     routingControl.on('routesfound', function (e) {
@@ -55,7 +64,7 @@ function initMap() {
         const tempo1 = (tempo / 60).toFixed(2)
         infoDiv_1.innerHTML = `${distancia}m`;
         infoDiv_2.innerHTML = `${tempo1}min`;
-        var mostrarDivInfo = document.getElementById('info_divEstrutura');
+        let mostrarDivInfo = document.getElementById('info_divEstrutura');
         mostrarDivInfo.style.display = 'block';
     });
 }
@@ -118,18 +127,21 @@ async function setVagas(map) {
         vagas.forEach(vaga => {
             const { latitude, longitude, id, tipo} = vaga; 
 
-            var urlIcon;
+            let pinoWidth = 26;
+            let pinoHeight = (585/398) * pinoWidth;
+            let urlIcon;
+
             if(tipo==="gratuita"){
-                urlIcon = 'imagens/pinolivre.png'
+                urlIcon = 'Imagens/pinolivre.png'
             } else if(tipo==="paga"){
-                urlIcon = 'imagens/pinopaga.png.png'
+                urlIcon = 'Imagens/pinopaga.png.png'
             } else if(tipo==="PCD"){
-                urlIcon = 'imagens/vagadeficiente.png'
+                urlIcon = 'Imagens/vagadeficiente.png'
             } else if (tipo === "PCD") {
-                var customIcon = L.icon({
+                let customIcon = L.icon({
                     iconUrl: urlIcon, 
-                    iconSize: [32, 52], 
-                    iconAnchor: [16, 32] 
+                    iconSize: [pinoWidth, pinoHeight], 
+                    iconAnchor: [pinoWidth/2, pinoHeight] 
                 });
                 const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
                 marker.bindPopup(`ID da Vaga: ${id}`);
@@ -211,31 +223,47 @@ function deficiente(){
     }
 }
 
-function startGeolocationTracking(position) {
+function updateUserMarkerPosition(userPosition) {
     if (userMarker) {
-        map.removeLayer(userMarker);
-    }
-    map.setView(position);
-    userMarker = L.marker(position).addTo(map);
-    pontoPartida = position;
-    if (routingControl.getWaypoints().length > 0) {
-        routingControl.setWaypoints([pontoPartida, ...routingControl.getWaypoints().slice(1)]);
+        userMarker.setLatLng(userPosition);
+    } else {
+        urlIcon = 'Imagens/lozalização.usuariograndepng.png'
+        let customIcon = L.icon({
+            iconUrl: urlIcon, 
+            iconSize: [32, 32], 
+            iconAnchor: [16, 16] 
+        });
+        userMarker = L.marker(userPosition, { icon: customIcon }).addTo(map);
     }
 }
 
-function startGeolocationTrackingReturn() {
+function updateGeolocationTracking(){
     if ("geolocation" in navigator) {
-        navigator.geolocation.watchPosition(function (position) {
-            userPosition = [position.coords.latitude, position.coords.longitude];
-            startGeolocationTracking(userPosition);
-        }, function (error) {
-            console.error('Erro na geolocalização:', error);
-            alert('Não foi possível obter a localização do usuário.');
+        navigator.geolocation.watchPosition(function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            userPosition = [lat, lng]
+            if(routingControl.getWaypoints()[0].latLng != null){
+                routingControl.setWaypoints([userPosition, destinoCoord])
+                routingControl.route()
+            }
+            updateUserMarkerPosition(userPosition);
         });
     } else {
-        alert('Geolocalização não suportada neste navegador.');
+        console.log("Geolocalização não suportada pelo navegador.");
     }
+    }
+
+function startGeolocationTracking() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lng = position.coords.longitude;
+        userPosition = [lat, lng]
+        map.setView(userPosition, 19)
+        updateUserMarkerPosition(userPosition);
+    });
 }
 
 initMap();
-startGeolocationTrackingReturn();
+startGeolocationTracking()
+updateGeolocationTracking()

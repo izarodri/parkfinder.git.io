@@ -138,6 +138,10 @@ input:focus {
   margin-top: 70px;
 }
 
+.leaflet-routing-container {
+  display: none   ;
+}
+
 #info_divEstrutura {
   z-index: 9999;
   display: none;
