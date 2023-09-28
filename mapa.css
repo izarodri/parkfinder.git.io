@@ -202,8 +202,8 @@ input:focus {
     position: fixed;
     background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.699));
     width: 100vw;
-    height: 9vh;
-    top: 91vh;
+    height: 15vh;
+    top: 85vh;
     left: 0;
     border: none;
     border-radius: 0;
