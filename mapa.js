@@ -166,17 +166,19 @@ function adicionarAreas(){
     }).addTo(map);
 }
 function mudar(){
-    const botoes = document.getElementsByClassName("botoes");
+    const botoes = document.querySelector(".botoes");
     const botao = document.getElementById("bntfiltro");
     const imagem = botao.querySelector("img");
+
     if (botao.style.backgroundColor!="white"){
         botao.style.backgroundColor= "white";
         imagem.src="Imagens/filtropreto.png";
-        botoes.style.display = 'block';
+        botoes.style.visibility = "visible"
+    
     } else {
         botao.style.backgroundColor= "black";
         imagem.src="Imagens/filtro branco.png"
-        botoes.style.visibilty = "visible";
+        botoes.style.visibility = "hidden";
     } 
 }
 
