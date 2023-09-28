@@ -145,6 +145,13 @@ input:focus {
   height: calc(100vh - 70px);
   margin-top: 70px;
 }
+.leaflet-top{
+  margin-top: 5vh;
+}
+.leaflet-routing-container {
+  visibility: hidden;
+}
+
 
 #info_divEstrutura {
   z-index: 9999;
