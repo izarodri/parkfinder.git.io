@@ -91,11 +91,12 @@ function initMap() {
         const sairRota = document.getElementById("botaox")
         zoomKeys.style.visibility="hidden"
        /* routeOption.style.visibility = "visible"*/
-    });
-        sairRota.style.visibility ="visible"
+       sairRota.style.visibility ="visible"
         sairRota.addEventListener("click", voltarTop)
-       /* routeOption.style.visibility = "visible"*/        
+       /* routeOption.style.visibility = "visible"*/ 
     });
+               
+
 }
 function voltarTop(){
     const topbar = document.querySelector(".top-bar")
@@ -236,14 +237,7 @@ async function setVagas(map) {
             } else if(tipo==="pcd"){
                 urlIcon = 'Imagens/vagadeficiente.png'
             } 
-            
-            let customIcon = L.icon({
-                iconUrl: urlIcon, 
-                iconSize: [pinoWidth, pinoHeight], 
-                iconAnchor: [pinoWidth/2, pinoHeight] 
-            });
-            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
-            marker.bindPopup(`ID da Vaga: ${id}`);
+        
                 let customIcon = L.icon({
                     iconUrl: urlIcon, 
                     iconSize: [pinoWidth, pinoHeight], 
