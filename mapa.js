@@ -32,6 +32,8 @@ let routingControl;
 const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
 let userPosition = null;
+let vagas = [];
+let areas = [];
 
 
 function initMap() {
@@ -87,24 +89,60 @@ function initMap() {
         const routeOption = document.querySelector(".leaflet-routing-container")
         zoomKeys.style.visibility="hidden"
        /* routeOption.style.visibility = "visible"*/
-
-
-        
-        
-
-        
     });
 }
 
 function calcularRota() {
-   
 
     const destino = document.getElementById('destino').value;
     geocodificarEndereco(destino, function (destinoCoords) {
-        routingControl.setWaypoints([userPosition, destinoCoords]);
-        routingControl.route();
-        
+        isInArea = false
+        console.log(areas)
+        for (let index = 0; index < areas.length; index++) {
+            const area = areas[index];
+            const latArea = area.getLatLng().lat;
+            const lngArea = area.getLatLng().lng;
+            const raio = area.getRadius();
+            isInArea = isCoordinateInsideCircle(destinoCoords[0], destinoCoords[1], latArea, lngArea, raio);
+            if (isInArea) {
+                let menorDistancia;
+                let indexVagaMenorDistancia;
+                for (let index = 0; index < vagas.length; index++) {
+                    const vaga = vagas[index];
+                    if (index == 0) {
+                        menorDistancia = vaga.getLatLng().distanceTo(destinoCoords);
+
+                    } else {
+                        let distanciaVaga = vaga.getLatLng().distanceTo(destinoCoords);
+                        if (distanciaVaga < menorDistancia){
+                            menorDistancia = distanciaVaga
+                            indexVagaMenorDistancia = index
+                        }
+                                     
+                    }
+                
+                }
+                let vagaEscolhida = vagas[indexVagaMenorDistancia]
+                routingControl.setWaypoints([userPosition, vagaEscolhida.getLatLng()]);
+                routingControl.route() 
+            }  
+        }
+
+        if (!isInArea){
+            routingControl.setWaypoints([userPosition, destinoCoords]);
+            routingControl.route() 
+            alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
+            L.marker(destinoCoords).addTo(map);
+        }
+
     });
+}
+
+function isCoordinateInsideCircle(latitude, longitude, centroLatitude, centroLongitude, raio) {
+    let coordenadaUsuario = L.latLng(latitude, longitude);
+    let coordenadaCentro = L.latLng(centroLatitude, centroLongitude);
+    let distance = coordenadaUsuario.distanceTo(coordenadaCentro);
+    return distance <= raio;
 }
 
 function geocodificarEndereco(endereco, callback) {
@@ -157,9 +195,7 @@ async function setVagas(map) {
     
 
     try {
-        
-       
-        const vagas = await getVagas();
+        vagas = await getVagas();
 
         vagas.forEach(vaga => {
             const { latitude, longitude, id, tipo} = vaga; 
@@ -177,14 +213,13 @@ async function setVagas(map) {
                 urlIcon = 'Imagens/vagadeficiente.png'
             } 
             
-            
-                let customIcon = L.icon({
-                    iconUrl: urlIcon, 
-                    iconSize: [pinoWidth, pinoHeight], 
-                    iconAnchor: [pinoWidth/2, pinoHeight] 
-                });
-                const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
-                marker.bindPopup(`ID da Vaga: ${id}`);
+            let customIcon = L.icon({
+                iconUrl: urlIcon, 
+                iconSize: [pinoWidth, pinoHeight], 
+                iconAnchor: [pinoWidth/2, pinoHeight] 
+            });
+            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
+            marker.bindPopup(`ID da Vaga: ${id}`);
             
         });
     } catch (error) {
@@ -194,7 +229,6 @@ async function setVagas(map) {
 }
 
 const destino = document.getElementById('destino');
-
 destino.addEventListener("keydown", function(event) {
     
     if (event.keyCode === 13) {
@@ -218,6 +252,8 @@ function adicionarAreas(){
         fillColor: '#9D9D9D3B',
         radius: 200
     }).addTo(map);
+
+    areas = [circleCentro, circleIfba, circleIgreja]
 }
 function mudar(){
     const botoes = document.querySelector("#botoes");
@@ -284,7 +320,7 @@ function updateGeolocationTracking(){
             var lng = position.coords.longitude;
             userPosition = [lat, lng]
             if(routingControl.getWaypoints()[0].latLng != null){
-                routingControl.setWaypoints([userPosition, destinoCoord])
+                routingControl.setWaypoints([userPosition, destinoCoords])
                 routingControl.route()
             }
             updateUserMarkerPosition(userPosition);
