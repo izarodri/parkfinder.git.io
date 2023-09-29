@@ -118,16 +118,35 @@ body {
   font-weight: 550;
 }
 
+#botaox{
+  z-index: 9999;
+  right: 0;
+  margin-top: 10px;
+  position: fixed;
+  height: auto;
+  margin-right: 4%;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border-radius: 10px;
+  z-index: 999999;
+  visibility: hidden;
+ 
+}
+#imgbotaox{
+  
+}
+
 #btnLivre {
-  background: #58D443;
+  background-color: rgb(88, 212, 67)
 }
 
 #btnPaga {
-  background: #9D9D9D;
+  background: #4643D4;
 }
 
 #btnDeficiente {
-  background: #9D9D9D;
+  background: #43BAD4;
 }
 
 

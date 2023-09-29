@@ -32,6 +32,7 @@ let routingControl;
 const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
 let userPosition = null;
+const markers = [];
 
 
 function initMap() {
@@ -85,15 +86,30 @@ function initMap() {
         mapa.style.height = "100vh";
         const zoomKeys = document.querySelector(".leaflet-control-zoom")
         const routeOption = document.querySelector(".leaflet-routing-container")
+        const sairRota = document.getElementById("botaox")
         zoomKeys.style.visibility="hidden"
-       /* routeOption.style.visibility = "visible"*/
-
-
-        
-        
-
-        
+        sairRota.style.visibility ="visible"
+        sairRota.addEventListener("click", voltarTop)
+       /* routeOption.style.visibility = "visible"*/        
     });
+}
+function voltarTop(){
+    const topbar = document.querySelector(".top-bar")
+        const mapa =document.querySelector("#map")
+        topbar.style.visibility="visible"
+        mapa.style.marginTop = "70px";
+        mapa.style.height = "calc(100vh - 70px)";
+        const zoomKeys = document.querySelector(".leaflet-control-zoom")
+        const routeOption = document.querySelector(".leaflet-routing-container")
+        const sairRota = document.getElementById("botaox")
+        zoomKeys.style.visibility="visible"
+        sairRota.style.visibility ="hidden"
+
+        const infoDiv_1 = document.getElementById('info_1');
+        const infoDiv_2 = document.getElementById('info_2');
+
+        let mostrarDivInfo = document.getElementById('info_divEstrutura');
+        mostrarDivInfo.style.display = 'none';
 }
 
 function calcularRota() {
@@ -184,7 +200,9 @@ async function setVagas(map) {
                     iconAnchor: [pinoWidth/2, pinoHeight] 
                 });
                 const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
+                marker.vaga=tipo
                 marker.bindPopup(`ID da Vaga: ${id}`);
+                markers.push(marker)
             
         });
     } catch (error) {
@@ -235,31 +253,64 @@ function mudar(){
         botoes.style.visibility = "hidden";
     } 
 }
+function filtroPorTipo(tipo, desativado) {
+    markers.forEach(marker => {
+        const vagaTipo = marker.vaga; // Obtém o tipo da vaga do marcador
+       
+        
+        // Verifica se o tipo da vaga corresponde ao tipo desejado
+        if (vagaTipo === tipo) {
+           
+            if (map.hasLayer(marker)) {
+                map.removeLayer(marker); // Remove o marcador se estiver visível
+            }else {
+            
+            
+                if (!map.hasLayer(marker)) {
+                    
+                    marker.addTo(map); // Adiciona o marcador se estiver oculto
+                }
+            }
+        } 
+    });
+}
+
 
 function livre() {
     const botao = document.getElementById("btnLivre")
-
-    if (botao.style.backgroundColor!="rgb(157, 157, 157)"){ 
-        botao.style.backgroundColor= "#9D9D9D";
-    } else {
+    
+    if (botao.style.backgroundColor!=="rgb(88, 212, 67)" && botao.style.backgroundColor){ 
         botao.style.backgroundColor= "#58D443";
+        filtroPorTipo("gratuita");
+        
+    } else {
+        filtroPorTipo("gratuita");
+        botao.style.backgroundColor= "#9D9D9D";
+        
+       
     }
 }
 
 function paga() {
     const botao = document.getElementById("btnPaga")
-    if (botao.style.backgroundColor!="rgb(70, 67, 212)"){ 
+
+    if (botao.style.backgroundColor!=="rgb(70, 67, 212)" && botao.style.backgroundColor){ 
+        filtroPorTipo("paga");
         botao.style.backgroundColor= "#4643D4";
     } else {
         botao.style.backgroundColor= "#9D9D9D";
+        filtroPorTipo("paga");
     }
 }
 function deficiente(){
     const botao = document.getElementById("btnDeficiente")
-    if (botao.style.backgroundColor!="rgb(67, 186, 212)"){ 
-        botao.style.backgroundColor= "#43BAD4";
+
+    if (botao.style.backgroundColor!=="rgb(67, 186, 212)" && botao.style.backgroundColor){
+        botao.style.backgroundColor= "#43BAD4"; 
+        filtroPorTipo("pcd");
     } else {
         botao.style.backgroundColor= "#9D9D9D";
+        filtroPorTipo("pcd");
     }
 }
 
