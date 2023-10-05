@@ -36,7 +36,7 @@ let vaga;
 let areas;
 const markers = [];
 
-
+//gg
 function initMap() {
     
     map = L.map('map').setView(pontoPartida, 19);
@@ -153,7 +153,7 @@ function calcularRota() {
 
     });
 }
-
+//gg
 function isCoordinateInsideCircle(latitude, longitude, centroLatitude, centroLongitude, raio) {
     let coordenadaUsuario = L.latLng(latitude, longitude);
     let coordenadaCentro = L.latLng(centroLatitude, centroLongitude);
@@ -184,7 +184,7 @@ function geocodificarEndereco(endereco, callback) {
             console.error('Ocorreu um erro:', error);
         });
 }
-
+//gg
 async function setVagas(map) {
     async function getVagas() {
         try {
@@ -293,7 +293,7 @@ destino.addEventListener("keydown", function(event) {
         calcularRota();
     }
 });
-
+//gg
 function mudar(){
     const botoes = document.querySelector("#botoes");
     const botao = document.getElementById("bntfiltro");
@@ -309,6 +309,7 @@ function mudar(){
         botoes.style.visibility = "hidden";
     } 
 }
+//gg
 function filtroPorTipo(tipo, desativado) {
     markers.forEach(marker => {
         const vagaTipo = marker.vaga; // Obtém o tipo da vaga do marcador
@@ -369,7 +370,7 @@ function deficiente(){
         filtroPorTipo("pcd");
     }
 }
-
+//gg
 function updateUserMarkerPosition(userPosition) {
     if (userMarker) {
         userMarker.setLatLng(userPosition);
@@ -389,7 +390,7 @@ var options = {
     maximumAge: 5000,          
     timeout: 10000             
 };
-
+//gg
 function updateGeolocationTracking() {
     if ("geolocation" in navigator) {
         navigator.geolocation.watchPosition(function(position) {
