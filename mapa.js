@@ -128,27 +128,37 @@ function calcularRota() {
             for (let index = 0; index < areas.length; index++) {
                 const area = areas[index];
                 isInArea = isCoordinateInsideCircle(destinoCoords[0], destinoCoords[1], area.latitude, area.longitude, area.raio);
+                let counter = 0;
                 if (isInArea) {
                     if (vagas != undefined){
                         while (true) {
-                            numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length) + 1;
+                            numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length);
                             vagaEscolhida = vagas[numeroAleatorioInteiro]
-                            if (vagaEscolhida.idArea == area.id){
+                            counter++
+                            if (vagaEscolhida.idArea == area.id ){
+                                break
+                            }else if(counter == vagas.length){
+                                vagaEscolhida = undefined
                                 break
                             }
                             
+                            
                         }
-                        routingControl.setWaypoints([userPosition, [vagaEscolhida.latitude, vagaEscolhida.longitude]]);
-                        routingControl.route()  
+                        if (vagaEscolhida != undefined) {
+                            routingControl.setWaypoints([userPosition, [vagaEscolhida.latitude, vagaEscolhida.longitude]]);
+                            routingControl.route()  
+                        }
+                        
                     }
                 }  
             }
         }   
-        if (vagaEscolhida == undefinedf){
+        if (vagaEscolhida == undefined){
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
             alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
             L.marker(destinoCoords).addTo(map);
+            console.log(destinoCoords)
         }
 
     });
@@ -217,7 +227,6 @@ async function setVagas(map) {
         vagas.forEach(vaga => {
             const { latitude, longitude, id, tipo} = vaga; 
            
-
             let pinoWidth = 26;
             let pinoHeight = (585/398) * pinoWidth;
             let urlIcon;
@@ -359,10 +368,10 @@ function livre() {
     
     if (botao.style.backgroundColor!=="rgb(88, 212, 67)" && botao.style.backgroundColor){ 
         botao.style.backgroundColor= "#58D443";
-        filtroPorTipo("gratuita");
+        filtroPorTipo("normal");
         
     } else {
-        filtroPorTipo("gratuita");
+        filtroPorTipo("normal");
         botao.style.backgroundColor= "#9D9D9D";
         
        
