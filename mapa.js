@@ -246,7 +246,27 @@ async function setVagas(map) {
         console.error("Erro ao buscar vagas:", error);
     }
 }
+function conectarWebSocket() {
+    const socket = new WebSocket('ws://seuservidor.com/websocket-endpoint');
 
+    socket.addEventListener('open', (event) => {
+        console.log('Conexão WebSocket estabelecida.');
+    });
+
+    socket.addEventListener('message', (event) => {
+        const dadosAtualizados = JSON.parse(event.data);
+        // Processar os dados atualizados (por exemplo, atualizar o mapa com as vagas).
+        // Aqui, você pode adicionar lógica para atualizar o mapa com base nas atualizações recebidas.
+    });
+
+    socket.addEventListener('close', (event) => {
+        console.log('Conexão WebSocket fechada.');
+    });
+
+    socket.addEventListener('error', (event) => {
+        console.error('Erro na conexão WebSocket:', event);
+    });
+}
 async function setAreas(map) {
     async function getAreas() {
         try {
@@ -424,3 +444,4 @@ function startGeolocationTracking() {
 initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
+conectarWebSocket();
