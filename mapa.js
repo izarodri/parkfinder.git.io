@@ -32,8 +32,8 @@ let routingControl;
 const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
 let userPosition = null;
-let vagas = [];
-let areas = [];
+let vaga;
+let areas;
 const markers = [];
 
 
@@ -122,26 +122,29 @@ function calcularRota() {
     const destino = document.getElementById('destino').value;
     geocodificarEndereco(destino, function (destinoCoords) {
         isInArea = false
-        console.log(areas)
-        for (let index = 0; index < areas.length; index++) {
-            const area = areas[index];
-            isInArea = isCoordinateInsideCircle(destinoCoords[0], destinoCoords[1], area.latitude, area.longitude, area.raio);
-            if (isInArea) {
-                let vagaEscolhida
-                while (true) {
-                    numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length) + 1;
-                    vagaEscolhida = vagas[numeroAleatorioInteiro]
-                    if (vagaEscolhida.idArea == area.id){
-                        break
-                    }
-                }
-                
-                routingControl.setWaypoints([userPosition, [vagaEscolhida.latitude, vagaEscolhida.longitude]]);
-                routingControl.route() 
-            }  
-        }
+        let vagaEscolhida
 
-        if (!isInArea){
+        if (areas != undefined) {  
+            for (let index = 0; index < areas.length; index++) {
+                const area = areas[index];
+                isInArea = isCoordinateInsideCircle(destinoCoords[0], destinoCoords[1], area.latitude, area.longitude, area.raio);
+                if (isInArea) {
+                    if (vagas != undefined){
+                        while (true) {
+                            numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length) + 1;
+                            vagaEscolhida = vagas[numeroAleatorioInteiro]
+                            if (vagaEscolhida.idArea == area.id){
+                                break
+                            }
+                            
+                        }
+                        routingControl.setWaypoints([userPosition, [vagaEscolhida.latitude, vagaEscolhida.longitude]]);
+                        routingControl.route()  
+                    }
+                }  
+            }
+        }   
+        if (vagaEscolhida == undefined){
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
             alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
