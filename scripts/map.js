@@ -1,8 +1,10 @@
 // map.js
+import { setVagas, setAreas } from './data.js';
 let map;
 let routingControl;
 let userMarker = null;
 let userPosition = null;
+const pontoPartida = [-11.303361, -41.855833];
 
 export function initMap() {
     map = L.map('map').setView(pontoPartida, 19);
@@ -63,6 +65,12 @@ export function initMap() {
     });
 
 }
+
+var options = {
+    enableHighAccuracy: true,  // Ativar alta precisão
+    maximumAge: 5000,          // Idade máxima de 5 segundos para a posição
+    timeout: 10000             // Tempo limite de 10 segundos para obter a posição
+};
 
 export function startGeolocationTracking() {
     navigator.geolocation.getCurrentPosition(function(position) {

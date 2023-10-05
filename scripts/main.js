@@ -1,8 +1,8 @@
 // main.js
-import { initMap, startGeolocationTracking, updateGeolocationTracking } from './map';
-import { setVagas, setAreas, filtroPorTipo } from './data';
-import { calcularRota, isCoordinateInsideCircle, geocodificarEndereco } from './route';
-import { mudar, livre, paga, deficiente, voltarTop } from './ui';
+import { initMap, startGeolocationTracking, updateGeolocationTracking } from './map.js';
+import { setVagas, setAreas, filtroPorTipo } from './data.js';
+import { calcularRota, isCoordinateInsideCircle, geocodificarEndereco } from './route.js';
+import { mudar, livre, paga, deficiente, voltarTop } from './ui.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     // ...

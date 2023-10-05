@@ -144,7 +144,7 @@ function calcularRota() {
                 }  
             }
         }   
-        if (vagaEscolhida == undefined){
+        if (vagaEscolhida == undefinedf){
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
             alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
@@ -222,23 +222,23 @@ async function setVagas(map) {
             let pinoHeight = (585/398) * pinoWidth;
             let urlIcon;
 
-            if(tipo==="gratuita"){
+            if(tipo === "normal"){
                 urlIcon = 'Imagens/pinolivre.png'
-            } else if(tipo==="paga"){
+            } else if(tipo === "paga"){
                 urlIcon = 'Imagens/pinopaga.png'
-            } else if(tipo==="pcd"){
+            } else if(tipo === "pcd"){
                 urlIcon = 'Imagens/vagadeficiente.png'
             } 
-        
-                let customIcon = L.icon({
-                    iconUrl: urlIcon, 
-                    iconSize: [pinoWidth, pinoHeight], 
-                    iconAnchor: [pinoWidth/2, pinoHeight] 
-                });
-                const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
-                marker.vaga=tipo
-                marker.bindPopup(`ID da Vaga: ${id}`);
-                markers.push(marker)
+
+            let customIcon = L.icon({
+                iconUrl: urlIcon, 
+                iconSize: [pinoWidth, pinoHeight], 
+                iconAnchor: [pinoWidth/2, pinoHeight] 
+            });
+            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
+            marker.vaga=tipo
+            marker.bindPopup(`ID da Vaga: ${id}`);
+            markers.push(marker)
             
         });
     } catch (error) {
@@ -267,6 +267,7 @@ function conectarWebSocket() {
         console.error('Erro na conexão WebSocket:', event);
     });
 }
+
 async function setAreas(map) {
     async function getAreas() {
         try {
@@ -444,4 +445,4 @@ function startGeolocationTracking() {
 initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
-conectarWebSocket();
+//conectarWebSocket();
