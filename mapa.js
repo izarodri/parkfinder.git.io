@@ -31,10 +31,12 @@ let map;
 let routingControl;
 const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null;
+let destinoMarker = null;
 let userPosition = null;
 let vaga;
 let areas;
 const markers = [];
+let destinoCoords;
 
 //gg
 function initMap() {
@@ -82,8 +84,11 @@ function initMap() {
         mostrarDivInfo.style.display = 'block';
 
         const topbar = document.querySelector(".top-bar")
-        const mapa =document.querySelector("#map")
+        const botoes = document.querySelector("#botoes");
+        const mapa = document.querySelector("#map")
+        mudar()
         topbar.style.visibility="hidden"
+        botoes.style.visibility = 'hidden'
         mapa.style.margin = "0";
         mapa.style.height = "100vh";
         const zoomKeys = document.querySelector(".leaflet-control-zoom")
@@ -116,13 +121,16 @@ function voltarTop(){
     let mostrarDivInfo = document.getElementById('info_divEstrutura');
     mostrarDivInfo.style.display = 'none';
     routingControl.setWaypoints([])
+    if (destinoMarker){
+        map.removeLayer(destinoMarker);
+    }
 }
 
 function calcularRota() {
     const destino = document.getElementById('destino').value;
     geocodificarEndereco(destino, function (destinoCoords) {
         isInArea = false
-        let vagaEscolhida
+        let vagaEscolhida;
 
         if (areas != undefined) {  
             for (let index = 0; index < areas.length; index++) {
@@ -157,7 +165,7 @@ function calcularRota() {
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
             alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
-            L.marker(destinoCoords).addTo(map);
+            destinoMarker = L.marker(destinoCoords).addTo(map);
             console.log(destinoCoords)
         }
 
@@ -218,8 +226,7 @@ async function setVagas(map) {
             alert("Algo deu errado ao requisitar as vagas!");
         }
     }
-    
-    
+
 
     try {
         vagas = await getVagas();
