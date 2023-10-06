@@ -28,15 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
 */
 
 let map;
-let routingControl;
+let routingControl
 const pontoPartida = [-11.303361, -41.855833];
-let userMarker = null;
-let destinoMarker = null;
-let userPosition = null;
+let userMarker = null
+let destinoMarker = null
+let userPosition = null
 let vaga;
 let areas;
-const markers = [];
+const markers = []
 let destinoCoords;
+let filtrosAtivos = ['', '', '']
 
 //gg
 function initMap() {
@@ -136,6 +137,7 @@ function calcularRota() {
             for (let index = 0; index < areas.length; index++) {
                 const area = areas[index];
                 isInArea = isCoordinateInsideCircle(destinoCoords[0], destinoCoords[1], area.latitude, area.longitude, area.raio);
+                getFiltros()
                 let counter = 0;
                 if (isInArea) {
                     if (vagas != undefined){
@@ -143,7 +145,7 @@ function calcularRota() {
                             numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length);
                             vagaEscolhida = vagas[numeroAleatorioInteiro]
                             counter++
-                            if (vagaEscolhida.idArea == area.id ){
+                            if (vagaEscolhida.idArea == area.id && (vagaEscolhida.tipo == filtrosAtivos[0] || vagaEscolhida.tipo == filtrosAtivos[1] ||vagaEscolhida.tipo == filtrosAtivos[2])){
                                 break
                             }else if(counter == vagas.length){
                                 vagaEscolhida = undefined
@@ -229,32 +231,44 @@ async function setVagas(map) {
 
 
     try {
+        removeMarkers()
+        getFiltros()
+
         vagas = await getVagas();
 
         vagas.forEach(vaga => {
-            const { latitude, longitude, id, tipo} = vaga; 
-           
-            let pinoWidth = 26;
-            let pinoHeight = (585/398) * pinoWidth;
-            let urlIcon;
+            const { latitude, longitude, id, tipo, ocupado} = vaga; 
+            //console.log(tipo === "pcd" && ocupado == true)
+            
+            if (tipo == filtrosAtivos[0] || tipo == filtrosAtivos[1] ||tipo == filtrosAtivos[2]){
 
-            if(tipo === "normal"){
-                urlIcon = 'Imagens/pinolivre.png'
-            } else if(tipo === "paga"){
-                urlIcon = 'Imagens/pinopaga.png'
-            } else if(tipo === "pcd"){
-                urlIcon = 'Imagens/vagadeficiente.png'
-            } 
+                let pinoWidth = 26;
+                let pinoHeight = (585/398) * pinoWidth;
+                let urlIcon;
 
-            let customIcon = L.icon({
-                iconUrl: urlIcon, 
-                iconSize: [pinoWidth, pinoHeight], 
-                iconAnchor: [pinoWidth/2, pinoHeight] 
-            });
-            const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
-            marker.vaga=tipo
-            marker.bindPopup(`ID da Vaga: ${id}`);
-            markers.push(marker)
+                if(tipo === "normal"){
+                    urlIcon = 'Imagens/pinolivre.png'
+                } else if(tipo === "paga"){
+                    urlIcon = 'Imagens/pinopaga.png'
+                } else if(tipo === "pcd"){
+                    urlIcon = 'Imagens/vagadeficiente.png'
+                } 
+                if (tipo === "pcd" && ocupado == true){
+                    urlIcon = 'Imagens/vagadeficienteocupada.png'
+                } else if ((tipo === "normal" || tipo == "paga") && ocupado == true){
+                    urlIcon = 'Imagens/pinoocupado.png'
+                }
+
+                let customIcon = L.icon({
+                    iconUrl: urlIcon, 
+                    iconSize: [pinoWidth, pinoHeight], 
+                    iconAnchor: [pinoWidth/2, pinoHeight] 
+                });
+                const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
+                marker.vaga=tipo
+                marker.bindPopup(`ID da Vaga: ${id}`);
+                markers.push(marker)
+            }
             
         });
     } catch (error) {
@@ -262,6 +276,15 @@ async function setVagas(map) {
         console.error("Erro ao buscar vagas:", error);
     }
 }
+
+function removeMarkers() {
+    if (markers != undefined){
+        markers.forEach(marker => {
+            map.removeLayer(marker);
+        });
+    }
+}
+
 function conectarWebSocket() {
     const socket = new WebSocket('ws://seuservidor.com/websocket-endpoint');
 
@@ -332,6 +355,7 @@ destino.addEventListener("keydown", function(event) {
 });
 //gg
 function mudar(){
+    getFiltros()
     const botoes = document.querySelector("#botoes");
     const botao = document.getElementById("bntfiltro");
     const imagem = botao.querySelector("img");
@@ -350,9 +374,7 @@ function mudar(){
 function filtroPorTipo(tipo, desativado) {
     markers.forEach(marker => {
         const vagaTipo = marker.vaga; // Obtém o tipo da vaga do marcador
-       
-        
-        // Verifica se o tipo da vaga corresponde ao tipo desejado
+ 
         if (vagaTipo === tipo) {
            
             if (map.hasLayer(marker)) {
@@ -369,16 +391,39 @@ function filtroPorTipo(tipo, desativado) {
     });
 }
 
+function getFiltros() {
+    const botao = document.getElementById("btnLivre")
+    const botao2 = document.getElementById("btnPaga")
+    const botao3 = document.getElementById("btnDeficiente")
+
+    if(botao.style.backgroundColor == '' || botao.style.backgroundColor == 'rgb(88, 212, 67)'){
+        filtrosAtivos[0] = 'normal'
+    } else {
+        filtrosAtivos[0] = ''
+    }
+
+    if(botao2.style.backgroundColor == '' || botao2.style.backgroundColor == 'rgb(70, 67, 212)'){
+        filtrosAtivos[1] = 'paga'
+    } else {
+        filtrosAtivos[1] = ''
+    }
+
+    if(botao3.style.backgroundColor == '' || botao3.style.backgroundColor == 'rgb(67, 186, 212)'){
+        filtrosAtivos[2] = 'pcd'
+    } else {
+        filtrosAtivos[2] = ''
+    }
+}
 
 function livre() {
     const botao = document.getElementById("btnLivre")
     
     if (botao.style.backgroundColor!=="rgb(88, 212, 67)" && botao.style.backgroundColor){ 
         botao.style.backgroundColor= "#58D443";
-        filtroPorTipo("normal");
+        //filtroPorTipo("normal");
         
     } else {
-        filtroPorTipo("normal");
+        //filtroPorTipo("normal");
         botao.style.backgroundColor= "#9D9D9D";
         
        
@@ -389,11 +434,11 @@ function paga() {
     const botao = document.getElementById("btnPaga")
 
     if (botao.style.backgroundColor!=="rgb(70, 67, 212)" && botao.style.backgroundColor){ 
-        filtroPorTipo("paga");
+        //filtroPorTipo("paga");
         botao.style.backgroundColor= "#4643D4";
     } else {
         botao.style.backgroundColor= "#9D9D9D";
-        filtroPorTipo("paga");
+        //filtroPorTipo("paga");
     }
 }
 function deficiente(){
@@ -401,10 +446,10 @@ function deficiente(){
 
     if (botao.style.backgroundColor!=="rgb(67, 186, 212)" && botao.style.backgroundColor){
         botao.style.backgroundColor= "#43BAD4"; 
-        filtroPorTipo("pcd");
+        //filtroPorTipo("pcd");
     } else {
         botao.style.backgroundColor= "#9D9D9D";
-        filtroPorTipo("pcd");
+        //filtroPorTipo("pcd");
     }
 }
 //gg
@@ -461,4 +506,6 @@ function startGeolocationTracking() {
 initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
+//setInterval(() => setVagas(map), 500);
+
 //conectarWebSocket();
