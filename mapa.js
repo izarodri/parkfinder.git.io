@@ -145,7 +145,7 @@ function calcularRota() {
                             numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length);
                             vagaEscolhida = vagas[numeroAleatorioInteiro]
                             counter++
-                            if (vagaEscolhida.idArea == area.id && (vagaEscolhida.tipo == filtrosAtivos[0] || vagaEscolhida.tipo == filtrosAtivos[1] ||vagaEscolhida.tipo == filtrosAtivos[2])){
+                            if (vagaEscolhida.idArea == area.id && (vagaEscolhida.tipo == filtrosAtivos[0] || vagaEscolhida.tipo == filtrosAtivos[1] ||vagaEscolhida.tipo == filtrosAtivos[2]) && vagaEscolhida.ocupado == false){
                                 break
                             }else if(counter == vagas.length){
                                 vagaEscolhida = undefined
@@ -225,7 +225,7 @@ async function setVagas(map) {
             }
         } catch (error) {
             console.error("Erro:", error);
-            alert("Algo deu errado ao requisitar as vagas!");
+            console.log("Algo deu errado ao requisitar as vagas!");
         }
     }
 
@@ -506,6 +506,6 @@ function startGeolocationTracking() {
 initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
-//setInterval(() => setVagas(map), 500);
+setInterval(() => setVagas(map), 2500);
 
 //conectarWebSocket();
