@@ -38,6 +38,7 @@ let areas;
 const markers = []
 let destinoCoords;
 let filtrosAtivos = ['', '', '']
+let vagaClicada = null;
 
 //gg
 function initMap() {
@@ -71,7 +72,7 @@ function initMap() {
     }).addTo(map);
 
     routingControl.on('routesfound', function (e) {
-      
+
         const routes = e.routes;
         const primeiraRota = routes[0];
         const tempo = primeiraRota.summary.totalTime;
@@ -126,7 +127,6 @@ function voltarTop(){
         map.removeLayer(destinoMarker);
     }
 }
-
 function calcularRota() {
     const destino = document.getElementById('destino').value;
     geocodificarEndereco(destino, function (destinoCoords) {
@@ -267,6 +267,34 @@ async function setVagas(map) {
                 const marker = L.marker([latitude, longitude], { icon: customIcon }).addTo(map);
                 marker.vaga=tipo
                 marker.bindPopup(`ID da Vaga: ${id}`);
+                marker.on('click', function () {
+                    alert('Vaga clicada');
+                        vagaClicada = {
+                            latitude: latitude,
+                            longitude: longitude
+                        };
+                    let mostrarDivIniciar = document.getElementById('info_divIniciar');
+                    mostrarDivIniciar.style.display = 'block';
+                    const info2 = document.getElementById('tipo');
+                    info2.innerHTML = `${tipo}`;     
+                     routingControl.on('routesfound', function (e) {
+                        const routes = e.routes;
+                        const primeiraRota = routes[0];
+                        const distancia = (primeiraRota.summary.totalDistance);
+                        const info1 = document.getElementById('distancia');
+                        info1.innerHTML = `${distancia}m`;
+                    });
+                    function btnIniciar() {
+                        if (vagaClicada) {
+                            routingControl.setWaypoints([userPosition, [vagaClicada.latitude, vagaClicada.longitude]]);
+                            routingControl.route();
+                        } else {
+                            alert('Nenhuma vaga clicada. Clique em uma vaga no mapa primeiro.');
+                        }
+                    }
+                    let btnIniciarVar = document.getElementById("btnIniciar");
+                    btnIniciarVar.onclick(btnIniciar());
+                });
                 markers.push(marker)
             }
             
