@@ -141,19 +141,28 @@ function calcularRota() {
                 let counter = 0;
                 if (isInArea) {
                     if (vagas != undefined){
-                        while (true) {
-                            numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length);
-                            vagaEscolhida = vagas[numeroAleatorioInteiro]
-                            counter++
-                            if (vagaEscolhida.idArea == area.id && (vagaEscolhida.tipo == filtrosAtivos[0] || vagaEscolhida.tipo == filtrosAtivos[1] ||vagaEscolhida.tipo == filtrosAtivos[2]) && vagaEscolhida.ocupado == false){
-                                break
-                            }else if(counter == vagas.length){
-                                vagaEscolhida = undefined
-                                break
+                        const vagasSorteadas = new Set();  // Conjunto para armazenar as vagas sorteadas
+
+                        while (vagasSorteadas.size < vagas.length) {
+                            const numeroAleatorioInteiro = Math.floor(Math.random() * vagas.length);
+                            vagaEscolhida = vagas[numeroAleatorioInteiro];
+
+                            // Verifica se a vaga já foi sorteada, se sim, continue para a próxima iteração
+                            if (vagasSorteadas.has(numeroAleatorioInteiro)) {
+                                continue;
                             }
-                            
-                            
+
+                            if (vagaEscolhida.idArea == area.id && (vagaEscolhida.tipo == filtrosAtivos[0] || vagaEscolhida.tipo == filtrosAtivos[1] || vagaEscolhida.tipo == filtrosAtivos[2]) && vagaEscolhida.ocupado == false) {
+                                break;
+                            } else {
+                                vagasSorteadas.add(numeroAleatorioInteiro);
+                            }
                         }
+                        ;
+                        if (vagasSorteadas.size === vagas.length) {
+                            vagaEscolhida = undefined;
+                        }
+
                         if (vagaEscolhida != undefined) {
                             routingControl.setWaypoints([userPosition, [vagaEscolhida.latitude, vagaEscolhida.longitude]]);
                             routingControl.route()  
@@ -162,13 +171,13 @@ function calcularRota() {
                     }
                 }  
             }
-        }   
+        }  
+        console.log(vagaEscolhida) 
         if (vagaEscolhida == undefined){
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
             alert("Não encontramos nenhuma vaga perto da sua localização de destino!!")
             destinoMarker = L.marker(destinoCoords).addTo(map);
-            console.log(destinoCoords)
         }
 
     });
@@ -231,14 +240,13 @@ async function setVagas(map) {
 
 
     try {
-        removeMarkers()
-        getFiltros()
+        
 
         vagas = await getVagas();
-
+        removeMarkers()
+        getFiltros()
         vagas.forEach(vaga => {
             const { latitude, longitude, id, tipo, ocupado} = vaga; 
-            //console.log(tipo === "pcd" && ocupado == true)
             
             if (tipo == filtrosAtivos[0] || tipo == filtrosAtivos[1] ||tipo == filtrosAtivos[2]){
 
@@ -383,7 +391,6 @@ destino.addEventListener("keydown", function(event) {
 });
 //gg
 function mudar(){
-    getFiltros()
     const botoes = document.querySelector("#botoes");
     const botao = document.getElementById("bntfiltro");
     const imagem = botao.querySelector("img");
@@ -534,6 +541,6 @@ function startGeolocationTracking() {
 initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
-setInterval(() => setVagas(map), 2500);
+setInterval(() => setVagas(map), 500);
 
 //conectarWebSocket();
