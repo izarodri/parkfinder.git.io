@@ -97,6 +97,8 @@ function initMap() {
         const routeOption = document.querySelector(".leaflet-routing-container")
         const sairRota = document.getElementById("botaox")
         zoomKeys.style.visibility="hidden"
+        let mostrarDivIniciar = document.getElementById('info_divIniciar');
+        mostrarDivIniciar.style.display = 'none';
        /* routeOption.style.visibility = "visible"*/
         sairRota.style.visibility ="visible"
         sairRota.addEventListener("click", voltarTop)
@@ -116,7 +118,6 @@ function voltarTop(){
     const sairRota = document.getElementById("botaox")
     zoomKeys.style.visibility="visible"
     sairRota.style.visibility ="hidden"
-
     const infoDiv_1 = document.getElementById('info_1');
     const infoDiv_2 = document.getElementById('info_2');
 
@@ -277,13 +278,6 @@ async function setVagas(map) {
                     mostrarDivIniciar.style.display = 'block';
                     const info2 = document.getElementById('tipo');
                     info2.innerHTML = `${tipo}`;     
-                     routingControl.on('routesfound', function (e) {
-                        const routes = e.routes;
-                        const primeiraRota = routes[0];
-                        const distancia = (primeiraRota.summary.totalDistance);
-                        const info1 = document.getElementById('distancia');
-                        info1.innerHTML = `${distancia}m`;
-                    });
                     function btnIniciar() {
                         if (vagaClicada) {
                             routingControl.setWaypoints([userPosition, [vagaClicada.latitude, vagaClicada.longitude]]);
@@ -293,7 +287,7 @@ async function setVagas(map) {
                         }
                     }
                     let btnIniciarVar = document.getElementById("btnIniciar");
-                    btnIniciarVar.onclick(btnIniciar());
+                    btnIniciarVar.onclick = btnIniciar;
                 });
                 markers.push(marker)
             }
