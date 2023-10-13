@@ -33,7 +33,7 @@ const pontoPartida = [-11.303361, -41.855833];
 let userMarker = null
 let destinoMarker = null
 let userPosition = null
-let vaga;
+let vagas;
 let areas;
 const markers = []
 let destinoCoords;
@@ -128,6 +128,7 @@ function voltarTop(){
         map.removeLayer(destinoMarker);
     }
 }
+
 function calcularRota() {
     const destino = document.getElementById('destino').value;
     geocodificarEndereco(destino, function (destinoCoords) {
@@ -173,7 +174,7 @@ function calcularRota() {
                 }  
             }
         }  
-        console.log(vagaEscolhida) 
+
         if (vagaEscolhida == undefined){
             routingControl.setWaypoints([userPosition, destinoCoords]);
             routingControl.route() 
@@ -183,12 +184,41 @@ function calcularRota() {
 
     });
 }
+
 //gg
 function isCoordinateInsideCircle(latitude, longitude, centroLatitude, centroLongitude, raio) {
     let coordenadaUsuario = L.latLng(latitude, longitude);
     let coordenadaCentro = L.latLng(centroLatitude, centroLongitude);
     let distance = coordenadaUsuario.distanceTo(coordenadaCentro);
     return distance <= raio;
+}
+
+function verificarRotaEVaga() {
+    let waypoints = routingControl.getWaypoints()
+    if (waypoints[0].latLng !== null) {
+        const destinoCoords = waypoints[waypoints.length - 1].latLng
+        const estadoVaga = getEstadoVaga(destinoCoords)
+        console.log(estadoVaga);
+        
+        if (estadoVaga) {
+            calcularRota();
+        }
+    }
+}
+
+function getEstadoVaga(destinoCoords) {
+    if (destinoCoords !== undefined) {
+        if(destinoCoords.lat !== null){
+            const coordenadas = `${destinoCoords.lat},${destinoCoords.lng}`;
+    
+            const vagaEncontrada = vagas.find(vaga => {
+                return vaga.latitude + ',' + vaga.longitude === coordenadas;
+            });
+            if (vagaEncontrada !== undefined){
+               return vagaEncontrada.ocupado;
+            }
+        }
+    }
 }
 
 
@@ -536,5 +566,6 @@ initMap();
 startGeolocationTracking()
 updateGeolocationTracking()
 setInterval(() => setVagas(map), 500);
+setInterval(verificarRotaEVaga, 500);
 
 //conectarWebSocket();
