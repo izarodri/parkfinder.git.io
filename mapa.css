@@ -250,8 +250,8 @@ input:focus {
 #info_divIniciar{
   background: #FFFFFF;
   display: none;
-  width: 38.375em; /* 467px / 8px (tamanho de fonte padrão) */
-  height: 22.875em; /* 263px / 8px (tamanho de fonte padrão) */
+  width: 14.375em; /* 467px / 8px (tamanho de fonte padrão) */
+  height: 18.875em; /* 263px / 8px (tamanho de fonte padrão) */
   top: 16.875em; /* 183px / 8px (tamanho de fonte padrão) */
   left: 6em; /* 48px / 8px (tamanho de fonte padrão) */
   border-radius: 1.25em; /* 10px / 8px (tamanho de fonte padrão) */
@@ -263,8 +263,7 @@ input:focus {
   background: rgb(88, 212, 67);
   width: 10.9375em; /* 175px / 16px (tamanho de fonte padrão) */
   height: 6.25em; /* 100px / 16px (tamanho de fonte padrão) */
-  top: 18.1875em; /* 291px / 16px (tamanho de fonte padrão) */
-  left: 20em; /* 320px / 16px (tamanho de fonte padrão) */
+  margin: 1rem;
   border-radius: 3.1em;
 }
 .iniciar{

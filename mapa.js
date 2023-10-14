@@ -39,6 +39,7 @@ const markers = []
 let destinoCoords;
 let filtrosAtivos = ['', '', '']
 let vagaClicada = null;
+let coordenadasVaga = null;
 
 //gg
 function initMap() {
@@ -308,14 +309,19 @@ async function setVagas(map) {
                 marker.bindPopup(`ID da Vaga: ${id}`);
                 marker.on('click', function () {
                     alert('Vaga clicada');
-                        vagaClicada = {
-                            latitude: latitude,
-                            longitude: longitude
-                        };
+                    vagaClicada = {
+                        latitude: latitude,
+                        longitude: longitude
+                    };
                     let mostrarDivIniciar = document.getElementById('info_divIniciar');
                     mostrarDivIniciar.style.display = 'block';
                     const info2 = document.getElementById('tipo');
-                    info2.innerHTML = `${tipo}`;     
+                    info2.innerHTML = `${tipo}`;   
+                    const userLatLng = L.latLng(userPosition);
+                    const vagaLatLng = L.latLng(vagaClicada.latitude, vagaClicada.longitude);
+                    const distancia = userLatLng.distanceTo(vagaLatLng);
+                    const info3 = document.getElementById('distancia');
+                    info3.innerHTML = `${distancia.toFixed(2)} metros`;                    
                     function btnIniciar() {
                         if (vagaClicada) {
                             routingControl.setWaypoints([userPosition, [vagaClicada.latitude, vagaClicada.longitude]]);
