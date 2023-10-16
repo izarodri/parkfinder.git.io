@@ -392,5 +392,7 @@ input:focus {
   #info_2 {
     font-size: 20px;
   }
-
+  #info_divIniciar{
+    top: 160vw;
+  }
 }

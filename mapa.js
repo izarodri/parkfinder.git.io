@@ -76,16 +76,18 @@ function initMap() {
 
         const routes = e.routes;
         const primeiraRota = routes[0];
-        const tempo = primeiraRota.summary.totalTime;
-        const distancia = ((primeiraRota.summary.totalDistance)/1000)
+        const distanciaMetros = primeiraRota.summary.totalDistance;
         const infoDiv_1 = document.getElementById('info_1');
         const infoDiv_2 = document.getElementById('info_2');
-        const tempo1 = (tempo / 60).toFixed(2)
-        infoDiv_1.innerHTML = `${distancia}km`;
-        infoDiv_2.innerHTML = `${tempo1}min`;
+        const quilometros = Math.floor(distanciaMetros / 1000);
+        const metros = (distanciaMetros % 1000).toFixed(0);
+        infoDiv_1.innerHTML = `${quilometros}km e ${metros}m`;
+        const tempo = primeiraRota.summary.totalTime;
+        const minutos = Math.floor(tempo / 60);
+        const segundos = tempo % 60;
+        infoDiv_2.innerHTML = `${minutos}min e ${parseInt(segundos)}s`;
         let mostrarDivInfo = document.getElementById('info_divEstrutura');
         mostrarDivInfo.style.display = 'block';
-
         const topbar = document.querySelector(".top-bar")
         const botoes = document.querySelector("#botoes");
         const mapa = document.querySelector("#map")
@@ -131,8 +133,8 @@ function voltarTop(){
 }
 
 function calcularRota() {
-    const destino = document.getElementById('destino').value;
-    geocodificarEndereco(destino, function (destinoCoords) {
+    const iniciarDestino = document.getElementById('destino').value;
+    geocodificarEndereco(iniciarDestino, function (destinoCoords) {
         isInArea = false
         let vagaEscolhida;
 
@@ -331,6 +333,12 @@ async function setVagas(map) {
                     }
                     let btnIniciarVar = document.getElementById("btnIniciar");
                     btnIniciarVar.onclick = btnIniciar;
+                    const sairRota = document.getElementById("botaox")
+                    sairRota.style.visibility ="visible"
+                    sairRota.addEventListener("click", function() {
+                        voltarTop();
+                        mostrarDivIniciar.style.display = 'none';  
+                    });
                 });
                 markers.push(marker)
             }
