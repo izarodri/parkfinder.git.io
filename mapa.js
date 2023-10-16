@@ -77,11 +77,11 @@ function initMap() {
         const routes = e.routes;
         const primeiraRota = routes[0];
         const tempo = primeiraRota.summary.totalTime;
-        const distancia = (primeiraRota.summary.totalDistance)
+        const distancia = ((primeiraRota.summary.totalDistance)/1000)
         const infoDiv_1 = document.getElementById('info_1');
         const infoDiv_2 = document.getElementById('info_2');
         const tempo1 = (tempo / 60).toFixed(2)
-        infoDiv_1.innerHTML = `${distancia}m`;
+        infoDiv_1.innerHTML = `${distancia}km`;
         infoDiv_2.innerHTML = `${tempo1}min`;
         let mostrarDivInfo = document.getElementById('info_divEstrutura');
         mostrarDivInfo.style.display = 'block';
@@ -308,20 +308,19 @@ async function setVagas(map) {
                 marker.vaga=tipo
                 marker.bindPopup(`ID da Vaga: ${id}`);
                 marker.on('click', function () {
-                    alert('Vaga clicada');
                     vagaClicada = {
                         latitude: latitude,
                         longitude: longitude
                     };
                     let mostrarDivIniciar = document.getElementById('info_divIniciar');
-                    mostrarDivIniciar.style.display = 'block';
+                    mostrarDivIniciar.style.display = 'flex';
                     const info2 = document.getElementById('tipo');
                     info2.innerHTML = `${tipo}`;   
                     const userLatLng = L.latLng(userPosition);
                     const vagaLatLng = L.latLng(vagaClicada.latitude, vagaClicada.longitude);
-                    const distancia = userLatLng.distanceTo(vagaLatLng);
+                    const distancia = userLatLng.distanceTo(vagaLatLng)/1000;
                     const info3 = document.getElementById('distancia');
-                    info3.innerHTML = `${distancia.toFixed(2)} metros`;                    
+                    info3.innerHTML = `${distancia.toFixed(2)} km`;                    
                     function btnIniciar() {
                         if (vagaClicada) {
                             routingControl.setWaypoints([userPosition, [vagaClicada.latitude, vagaClicada.longitude]]);
